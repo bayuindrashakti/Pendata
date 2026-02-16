@@ -1,55 +1,40 @@
-# Markdown Files
+# Business Understanding
+Business Understanding merupakan tahap strategis yang menentukan arah keseluruhan proyek penambangan data. Pada fase ini, organisasi tidak berbicara tentang algoritma, model, atau coding, melainkan tentang tujuan, kebutuhan, serta dampak bisnis yang ingin dicapai.
 
-Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
-in regular markdown files (`.md`), you'll write in the same flavor of markdown
-called **MyST Markdown**.
-This is a simple file to help you get started and show off some syntax.
+Dalam praktik nyata, banyak proyek data mining gagal bukan karena kesalahan teknis, tetapi karena ketidaksesuaian antara solusi yang dibangun dengan kebutuhan bisnis. Oleh karena itu, tahap ini berfungsi sebagai fondasi konseptual.
 
-## What is MyST?
+## 1.1 Memahami Konteks Organisasi
+Langkah pertama adalah memahami kondisi organisasi secara menyeluruh:
+Model bisnis yang dijalankan
+Sumber pendapatan utama
+Tantangan operasional
+Strategi jangka pendek dan panjang
+Sebagai contoh, perusahaan e-commerce yang fokus pada ekspansi pasar akan memiliki kebutuhan analitik berbeda dibanding perusahaan perbankan yang fokus pada manajemen risiko.
+Memahami konteks ini penting agar solusi data mining tidak berdiri sendiri, melainkan terintegrasi dengan strategi perusahaan.
 
-MyST stands for "Markedly Structured Text". It
-is a slight variation on a flavor of markdown called "CommonMark" markdown,
-with small syntax extensions to allow you to write **roles** and **directives**
-in the Sphinx ecosystem.
+## 1.2 Perumusan Masalah Bisnis Secara Operasional
+Masalah bisnis harus dirumuskan secara:
+Spesifik
+Terukur
+Realistis
+Relevan
+Contoh perumusan yang baik:
+“Mengurangi tingkat churn pelanggan sebesar 10% dalam 6 bulan.”
+“Meningkatkan efektivitas kampanye promosi dengan meningkatkan conversion rate sebesar 5%.”
+“Menurunkan rasio kredit macet di bawah 3%.”
+Masalah yang terlalu umum seperti “ingin meningkatkan performa perusahaan” tidak dapat langsung diterjemahkan menjadi model analitik.
 
-For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
+## 1.3 Translasi Masalah ke Perspektif Data
+Tahap ini mengubah pertanyaan bisnis menjadi pertanyaan analitik. Contoh:
+Masalah bisnis:
+Menurunkan churn pelanggan.
+Masalah analitik:
+Membangun model klasifikasi untuk memprediksi probabilitas pelanggan berhenti bertransaksi berdasarkan histori aktivitas.
+Proses translasi ini membutuhkan komunikasi yang baik antara stakeholder bisnis dan tim teknis.
 
-## Sample Roles and Directives
-
-Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but **roles are written in one line**, whereas
-**directives span many lines**. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.
-
-Here is a "note" directive:
-
-```{note}
-Here is a note
-```
-
-It will be rendered in a special box when you build your book.
-
-Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
-
-
-## Citations
-
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
-
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
-
-```{bibliography}
-```
-
-## Learn more
-
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
+## 1.4 Penentuan Kriteria Keberhasilan
+Keberhasilan proyek tidak hanya diukur dari akurasi model, tetapi dari dampak nyata terhadap bisnis.
+Misalnya:
+Jika model memiliki akurasi 90% tetapi tidak meningkatkan retensi pelanggan, maka proyek belum berhasil.
+Jika model meningkatkan efisiensi biaya pemasaran, maka nilai bisnis telah tercapai.
+Tahap Business Understanding memastikan bahwa proyek memiliki tujuan jelas, indikator keberhasilan terdefinisi, dan risiko telah diidentifikasi sejak awal.
