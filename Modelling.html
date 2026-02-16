@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Perkenalan &#8212; My sample book</title>
+    <title>Modeling &#8212; My sample book</title>
   
   
   
@@ -62,10 +62,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Modelling';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Business Understanding" href="Business%20Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -168,8 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Perkenalan
                 </a>
             </li>
@@ -248,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FModelling.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +277,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/Modelling.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Perkenalan</h1>
+    <h1>Modeling</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,8 +371,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-muhammad-bayu-indrashakti">R Muhammad Bayu Indrashakti</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">240411100193</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-teknik">4.1 Pemilihan Teknik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-pelatihan-model">4.2 Proses Pelatihan Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-dan-interpretasi">4.3 Evaluasi dan Interpretasi</a></li>
 </ul>
             </nav>
         </div>
@@ -385,16 +385,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="perkenalan">
-<h1>Perkenalan<a class="headerlink" href="#perkenalan" title="Permalink to this heading">#</a></h1>
-<section id="r-muhammad-bayu-indrashakti">
-<h2>R Muhammad Bayu Indrashakti<a class="headerlink" href="#r-muhammad-bayu-indrashakti" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling">
+<h1>Modeling<a class="headerlink" href="#modeling" title="Permalink to this heading">#</a></h1>
+<p>Modeling adalah tahap pembangunan model analitik untuk menemukan pola atau melakukan prediksi.</p>
+<section id="pemilihan-teknik">
+<h2>4.1 Pemilihan Teknik<a class="headerlink" href="#pemilihan-teknik" title="Permalink to this heading">#</a></h2>
+<p>Pemilihan teknik bergantung pada tujuan:
+Klasifikasi → memprediksi kategori
+Regresi → memprediksi nilai kontinu
+Clustering → segmentasi tanpa label
+Setiap teknik memiliki asumsi dan karakteristik berbeda.</p>
 </section>
-<section id="id1">
-<h2>240411100193<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="proses-pelatihan-model">
+<h2>4.2 Proses Pelatihan Model<a class="headerlink" href="#proses-pelatihan-model" title="Permalink to this heading">#</a></h2>
+<p>Data dibagi menjadi training dan testing untuk menghindari overfitting. Model dilatih menggunakan data training dan diuji pada data yang belum pernah dilihat sebelumnya.
+Cross-validation sering digunakan untuk memastikan stabilitas performa model.</p>
 </section>
-<div class="toctree-wrapper compound">
-</div>
+<section id="evaluasi-dan-interpretasi">
+<h2>4.3 Evaluasi dan Interpretasi<a class="headerlink" href="#evaluasi-dan-interpretasi" title="Permalink to this heading">#</a></h2>
+<p>Evaluasi dilakukan menggunakan metrik yang sesuai konteks. Namun, interpretasi hasil sama pentingnya dengan nilai metrik.
+Misalnya:
+Model dengan recall tinggi mungkin lebih penting dalam deteksi fraud.
+Model dengan precision tinggi mungkin lebih penting dalam kampanye pemasaran agar tidak salah sasaran.
+Interpretabilitas juga menjadi perhatian, terutama pada sektor keuangan dan kesehatan yang memerlukan transparansi keputusan.
+Modeling bukan hanya soal memilih algoritma terbaik, tetapi menemukan keseimbangan antara akurasi, kompleksitas, dan interpretasi.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -427,15 +442,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="Business%20Understanding.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Business Understanding</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -452,8 +458,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-muhammad-bayu-indrashakti">R Muhammad Bayu Indrashakti</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">240411100193</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-teknik">4.1 Pemilihan Teknik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-pelatihan-model">4.2 Proses Pelatihan Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-dan-interpretasi">4.3 Evaluasi dan Interpretasi</a></li>
 </ul>
   </nav></div>
 
