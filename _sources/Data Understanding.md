@@ -2,7 +2,7 @@
 Data Understanding bertujuan untuk memahami kondisi, struktur, kualitas, dan potensi dataset sebelum dilakukan pemodelan.
 Data merupakan representasi dari realitas bisnis. Oleh karena itu, pemahaman terhadap data berarti memahami perilaku sistem atau pelanggan yang direpresentasikan.
 
-## 2.1 Identifikasi dan Integrasi Sumber Data
+### 2.1 Identifikasi dan Integrasi Sumber Data
 Data dapat berasal dari berbagai sistem:
 Sistem transaksi
 Data pelanggan
@@ -16,7 +16,7 @@ Volume data
 Konsistensi antar sumber
 Integrasi data sering menjadi tantangan karena perbedaan struktur dan format.
 
-## 2.2 Eksplorasi Statistik dan Visualisasi
+### 2.2 Eksplorasi Statistik dan Visualisasi
 Eksplorasi data dilakukan untuk memahami karakteristik statistik dataset, seperti:
 Rata-rata dan median
 Distribusi nilai
@@ -28,7 +28,7 @@ Hubungan non-linear
 Pola musiman
 Misalnya, dalam analisis penjualan, dapat ditemukan bahwa transaksi meningkat tajam pada akhir bulan atau saat promosi tertentu.
 
-## 2.3 Analisis Kualitas Data
+### 2.3 Analisis Kualitas Data
 Kualitas data sangat memengaruhi performa model. Beberapa aspek yang dianalisis:
 Missing values dan pola kemunculannya
 Duplikasi data
