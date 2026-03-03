@@ -94,7 +94,7 @@ bukti screenshot
 
 ### link program
 
-https://colab.research.google.com/drive/1GSy-86MX61px6TsFmbnX_iAG0U7MrHCT?usp=sharing
+https://colab.research.google.com/drive/1xl65AHBp9bWO_wA2mRbTdoj_e6VPWey1?usp=sharing
 
 ### kode lengkap
 
