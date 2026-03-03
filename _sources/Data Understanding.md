@@ -86,5 +86,226 @@ Dari gambar di atas menunjukkan korelasi antara sepal_width dan petal_width lema
 
 Berdasarkan tabel statistik deskriptif di atas, dataset Iris menunjukkan karakteristik yang menarik untuk setiap variabel pengukuran. Pada sepal_length, nilai rata-rata sebesar 5.84 cm sangat dekat dengan median 5.8 cm, mengindikasikan distribusi data yang relatif simetris dan terkonsentrasi di kisaran 5-6 cm dengan variasi yang kecil. Sementara itu, sepal_width memiliki mean 3.05 cm dengan median dan mode sama-sama bernilai 3 cm, menunjukkan bahwa lebar sepal cenderung homogen antar spesies dengan penyebaran data yang rapat. Berbeda dengan pengukuran sepal, variabel petal_length dan petal_width menunjukkan pola yang lebih kompleks. Nilai mode pada petal_length (1.5 cm) dan petal_width (0.2 cm) sangat berbeda dengan median masing-masing (4.35 cm dan 1.3 cm), yang mengindikasikan adanya distribusi bimodal atau dua kelompok data yang terpisah jelas. Hal ini diperkuat oleh nilai dispersi yang lebih tinggi pada petal_width (0.63) dibandingkan variabel lainnya, menunjukkan bahwa pengukuran petal memiliki variabilitas yang lebih besar dan lebih efektif untuk membedakan antar spesies.
 
+### python (google colab)
+
+bukti screenshot
+
+![screenshot](gambartugas1/buktiss.png)
+
+### link program
+
+https://colab.research.google.com/drive/1GSy-86MX61px6TsFmbnX_iAG0U7MrHCT?usp=sharing
+
+### kode lengkap
+
+```python
+import pandas as pd
+from scipy import stats
+
+df = pd.read_csv("IRIS.csv")
+
+print("Daftar Kolom:", df.columns.tolist())
+print("-" * 60)
+
+kolom_numerik = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+
+for kolom in kolom_numerik:
+    print(f"\n Statistik untuk kolom: {kolom.upper()}")
+    print("-" * 40)
+    print("Jumlah data     :", df[kolom].count())
+    print("Rata-rata       :", "{0:.2f}".format(df[kolom].mean()))
+    print("Nilai minimal   :", df[kolom].min())
+    print("Q1              :", "{0:.2f}".format(df[kolom].quantile(0.25)))
+    print("Q2 (Median)     :", "{0:.2f}".format(df[kolom].quantile(0.5)))
+    print("Q3              :", "{0:.2f}".format(df[kolom].quantile(0.75)))
+    print("Nilai Max       :", df[kolom].max())
+    print("Kemencengan 1   :", "{0:.2f}".format(round(df[kolom].skew(), 2)))
+    print("Kemencengan 2   :", "{0:.6f}".format(round(df[kolom].skew(), 6)))
+    print("Standar Deviasi :", "{0:.2f}".format(round(df[kolom].std(), 2)))
+    print("Variansi        :", "{0:.2f}".format(round(df[kolom].var(), 2)))
+    
+    mode_result = stats.mode(df[kolom].dropna(), keepdims=True)
+    if len(mode_result.mode) > 0 and not pd.isna(mode_result.mode[0]):
+        print("Nilai modus     : {} dengan frekuensi {}".format(
+            mode_result.mode[0], mode_result.count[0]))
+    else:
+        print("Nilai modus     : Tidak ada modus tunggal")
+
+print(f"\n🌸 Statistik untuk kolom: SPECIES")
+print("-" * 40)
+print("Jumlah data     :", df['species'].count())
+print("Jumlah unik     :", df['species'].nunique())
+print("Nilai unik      :", df['species'].unique().tolist())
+print("\nDistribusi frekuensi:")
+print(df['species'].value_counts())
+print("\nModus (kategori paling sering):", df['species'].mode().values[0])
+```
+
+### output
+
+''' text
+Daftar Kolom: ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
+------------------------------------------------------------
+
+ Statistik untuk kolom: SEPAL_LENGTH
+----------------------------------------
+Jumlah data     : 150
+Rata-rata       : 5.84
+Nilai minimal   : 4.3
+Q1              : 5.10
+Q2 (Median)     : 5.80
+Q3              : 6.40
+Nilai Max       : 7.9
+Kemencengan 1   : 0.31
+Kemencengan 2   : 0.314911
+Standar Deviasi : 0.83
+Variansi        : 0.69
+Nilai modus     : 5.0 dengan frekuensi 10
+
+ Statistik untuk kolom: SEPAL_WIDTH
+----------------------------------------
+Jumlah data     : 150
+Rata-rata       : 3.05
+Nilai minimal   : 2.0
+Q1              : 2.80
+Q2 (Median)     : 3.00
+Q3              : 3.30
+Nilai Max       : 4.4
+Kemencengan 1   : 0.33
+Kemencengan 2   : 0.334053
+Standar Deviasi : 0.43
+Variansi        : 0.19
+Nilai modus     : 3.0 dengan frekuensi 26
+
+ Statistik untuk kolom: PETAL_LENGTH
+----------------------------------------
+Jumlah data     : 150
+Rata-rata       : 3.76
+Nilai minimal   : 1.0
+Q1              : 1.60
+Q2 (Median)     : 4.35
+Q3              : 5.10
+Nilai Max       : 6.9
+Kemencengan 1   : -0.27
+Kemencengan 2   : -0.274464
+Standar Deviasi : 1.76
+Variansi        : 3.11
+Nilai modus     : 1.5 dengan frekuensi 14
+
+ Statistik untuk kolom: PETAL_WIDTH
+----------------------------------------
+Jumlah data     : 150
+Rata-rata       : 1.20
+Nilai minimal   : 0.1
+Q1              : 0.30
+Q2 (Median)     : 1.30
+Q3              : 1.80
+Nilai Max       : 2.5
+Kemencengan 1   : -0.10
+Kemencengan 2   : -0.104997
+Standar Deviasi : 0.76
+Variansi        : 0.58
+Nilai modus     : 0.2 dengan frekuensi 28
+
+🌸 Statistik untuk kolom: SPECIES
+----------------------------------------
+Jumlah data     : 150
+Jumlah unik     : 3
+Nilai unik      : ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+
+Distribusi frekuensi:
+species
+Iris-setosa        50
+Iris-versicolor    50
+Iris-virginica     50
+Name: count, dtype: int64
+
+Modus (kategori paling sering): Iris-setosa
+'''
+
+### penjelasan mengukur Jarak dengan tipe data campuran
+#### Latar Belakang
+
+Dalam praktik nyata, database yang digunakan untuk analisis data sering kali tidak hanya mengandung satu jenis tipe data saja, melainkan berbagai tipe data yang tercampur menjadi satu kesatuan. Sebagai contoh, sebuah dataset dapat memuat atribut nominal seperti warna atau jenis produk, atribut binary simetris seperti jenis kelamin, atribut binary asimetris seperti hasil tes medis yang bernilai Y/N, atribut numerik berupa data interval atau rasio seperti suhu atau pendapatan, serta atribut ordinal yang memiliki tingkatan atau peringkat seperti level kepuasan atau tingkat pendidikan. Karena setiap tipe data tersebut memiliki karakteristik dan cara pengukuran yang berbeda-beda, kita tidak dapat menerapkan satu rumus jarak secara langsung untuk menghitung kemiripan atau perbedaan antar objek. Sebagai solusi, pendekatan yang dapat digunakan adalah metode pembobotan, yaitu dengan menghitung jarak untuk setiap atribut secara terpisah sesuai dengan tipe datanya, kemudian menggabungkan seluruh hasil perhitungan tersebut menggunakan rumus jarak campuran yang memperhitungkan indikator validitas setiap atribut. Dengan pendekatan ini, seluruh jenis atribut dapat berkontribusi secara proporsional dalam perhitungan jarak akhir, sehingga hasil analisis menjadi lebih akurat dan mencerminkan karakteristik data yang sebenarnya.
 
 
+### Rumus mengukur jarak data campuran
+
+![rumusjarak](gambartugas1/rumusjarakcampur.png)
+
+Keterangan:
+
+simbol	penjelasan
+d(i,j)	Jarak antara objek i dan j
+p	umlah total atribut
+δ ij (f)​	Indikator: 1 jika atribut ke-f valid untuk dibandingkan, 0 jika tidak (misal: data missing)
+d ij (f)​	Jarak untuk atribut ke-f saja
+Cara Menghitung d(f)ij per Tipe Atribut
+#### 1. Atribut Nominal atau Binary
+
+ij(f) = 0, jika xif = xjf (nilai sama)
+
+
+dij(f) = 1, jika xif ≠ xjf (nilai berbeda)
+
+
+cara penghitungannya Menggunakan metode simple matching.
+
+
+#### 2. Atribut Numerik
+
+Lakukan normalisasi terlebih dahulu agar skala seragam, misalnya dengan:
+
+![numerik](gambartugas1/atributnumerik.png)
+
+Mean Absolute Deviation: lebih robust terhadap outlier
+
+
+Setelah dinormalisasi, hitung jarak dengan metode numerik (Euclidean, Manhattan, dll).
+
+
+#### Atribut Ordinal
+
+Langkah-langkah:
+
+
+Ganti nilai dengan ranking r i f​ (misal: rendah=1, sedang=2, tinggi=3)
+
+![ordinal](gambartugas1/atributnominal.png)
+
+Hitung jarak menggunakan metode numerik pada nilai z i f​
+
+
+### analisis mengunakan orange data mining untuk data yang campuran
+
+contoh data saya untuk menganalisis penghitungan jarak di orange
+![analisis](gambartugas1/analisisdataorange.png)
+
+Widget Distances digunakan untuk menghitung matriks dissimilarity (jarak) antar objek dalam dataset. arameter Compare diset ke Rows yang berarti perhitungan jarak dilakukan antar objek/data point (baris dalam dataset), bukan antar atribut. Hal ini sesuai dengan konsep matriks dissimilarity, dimana matriks segitiga dihasilkan dari perhitungan jarak antar n titik data. Metric jarak yang dipilih adalah Manhattan (normalized) karena data yang saya pakai memiliki data campuran
+
+![gambar2](gambartugas1/analisisdataorange2.png)
+
+Gambar tersebut menampilkan Matriks Dissimilarity (Distance Matrix) yang dihasilkan melalui widget Distance Matrix pada Orange Data Mining. matriks ini berbentuk segitiga (single mode) yang memuat data jarak antar n titik data. Struktur matriks ini bersifat simetris, dimana jarak antara objek i ke objek j sama dengan jarak objek j ke objek i atau d(i,j) = d(j,i), dan memiliki nilai diagonal nol yang menunjukkan jarak objek terhadap dirinya sendiri. nilai dissimilarity dalam matriks ini merupakan ukuran numerik dari perbedaan dua objek data. Interpretasi nilai jarak mengikuti prinsip dimana nilai yang sangat rendah menunjukkan benda yang lebih mirip, sedangkan nilai yang tinggi menunjukkan perbedaan yang besar. Hal ini terlihat jelas pada data pelanggan dalam matriks. Sebagai contoh, jarak antara customer 7590-VHVEG dan 5575-GNVDE adalah 2,074, yang menunjukkan tingkat perbedaan sedang. Namun, customer 7590-VHVEG memiliki nilai jarak yang lebih kecil yaitu 0,554 terhadap customer 3668-QPYBK, yang mengindikasikan bahwa kedua customer tersebut memiliki karakteristik yang sangat mirip. Sebaliknya, perbedaan yang signifikan terlihat pada pasangan customer 8091-TTVAX dan 3668-QPYBK yang memiliki nilai jarak sebesar 4,519. Nilai yang besar ini menandakan bahwa kedua objek tersebut sangat berbeda secara karakteristik. Secara keseluruhan, matriks ini memenuhi sifat-sifat jarak yaitu positive definiteness (nilai > 0 untuk objek berbeda), symmetry, dan triangle inequality. Hasil matriks dissimilarity ini menjadi dasar utama untuk tahapan selanjutnya yaitu Hierarchical Clustering dalam mengelompokkan pelanggan berdasarkan kemiripan karakteristiknya.
+
+![gambar3](gambartugas1/analisisdataorange3.png)
+
+![gambar4](gambartugas1/analisisdataorange4.png)
+
+Berdasarkan dendrogram, hierarchical clustering dilakukan dengan metode linkage Ward dan menghasilkan 4 cluster optimal. Pemotongan dendrogram dilakukan pada ketinggian tertentu sehingga diperoleh:
+
+Cluster 1: sejumlah X customer, Cluster 2: sejumlah X customer, Cluster 3: sejumlah X customer, Cluster 4: sejumlah X customer,
+
+Metode Ward linkage dipilih karena mampu menghasilkan cluster yang lebih kompak dengan meminimalkan varians dalam setiap cluster.
+
+### implementasikan data iris untuk mengukur jara di orange
+
+![implementasi1](gaambartugas1/implementasidataorange.png)
+
+gambar diatas merupakan sebagian data mentah dari iris untuk diimplementasikan dalam menghitung jarak
+
+![implementasi2](gambartugas1/implementasidataorange2.png)
+
+gambar di atas merupakan hasil dari menghitung jarak pada data iris dimana prosesnya sama dengan yang tadi
+![implementasi3](gambartugas1/implementasidataorange3.png)
+
+gambar di atas merupakan visualiasi pengukuran jarak pada orange, tetapi sementara saya menggunakan widget csv file impor untuk mengimpor data iris bukan menggunakan sql table karena widget tersebut masih ada erornya atau tidak bisa di pakai dan belum menemukan solusinya
