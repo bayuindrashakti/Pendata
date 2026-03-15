@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data Understanding';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -176,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Business%20Understanding.html">Business Understanding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="Data%20Preparation.html">Data Preparation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelling.html">Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deployment.html">Deployment</a></li>
@@ -375,6 +378,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-dan-integrasi-sumber-data">2.1 Identifikasi dan Integrasi Sumber Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-statistik-dan-visualisasi">2.2 Eksplorasi Statistik dan Visualisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kualitas-data">2.3 Analisis Kualitas Data</a></li>
@@ -415,6 +419,40 @@ Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘pet
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proyek-missing-values-imputation-normalisasi-data">Proyek: Missing Values Imputation + Normalisasi Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-telco-customer-churn">Dataset: Telco Customer Churn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values-imputasi-dengan-wknn-weighted-k-nearest-neighbor">1. Missing Values — Imputasi dengan WKNN (Weighted K-Nearest Neighbor)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-missing-values">1.1 Identifikasi Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-wknn-weighted-k-nearest-neighbor-imputation">1.2 Konsep WKNN (Weighted K-Nearest Neighbor Imputation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-manual-wknn-contoh-customerid-4472-lvygi">1.3 Penyelesaian Manual WKNN (Contoh: customerID = 4472-LVYGI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-lengkap-wknn-manual-full-imputation">1.4 Code Lengkap WKNN (Manual + Full Imputation)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data">2. Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-normalisasi-data">2.1 Pengertian Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-normalisasi-data">2.2 Macam-Macam Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-min-max-normalization-normalisasi-min-max">A. Min-Max Normalization (Normalisasi Min-Max)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-z-score-standardization-standardisasi-z-score">B. Z-Score Standardization (Standardisasi Z-Score)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-decimal-scaling-penskalaan-desimal">C. Decimal Scaling (Penskalaan Desimal)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sebelum-normalisasi">2.3 Data Sebelum Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-data">2.4 Hasil Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-hasil-min-max-normalization">A. Hasil Min-Max Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-hasil-z-score-standardization">B. Hasil Z-Score Standardization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hasil-decimal-scaling">C. Hasil Decimal Scaling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-normalisasi-data-menggunakan-sklearn">2.5 Code Normalisasi Data (Menggunakan sklearn)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-metode-normalisasi">2.6 Perbandingan Metode Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">2.7 Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -706,6 +744,695 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="proyek-missing-values-imputation-normalisasi-data">
+<h1>Proyek: Missing Values Imputation + Normalisasi Data<a class="headerlink" href="#proyek-missing-values-imputation-normalisasi-data" title="Permalink to this heading">#</a></h1>
+<section id="dataset-telco-customer-churn">
+<h2>Dataset: Telco Customer Churn<a class="headerlink" href="#dataset-telco-customer-churn" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="missing-values-imputasi-dengan-wknn-weighted-k-nearest-neighbor">
+<h2>1. Missing Values — Imputasi dengan WKNN (Weighted K-Nearest Neighbor)<a class="headerlink" href="#missing-values-imputasi-dengan-wknn-weighted-k-nearest-neighbor" title="Permalink to this heading">#</a></h2>
+<section id="identifikasi-missing-values">
+<h3>1.1 Identifikasi Missing Values<a class="headerlink" href="#identifikasi-missing-values" title="Permalink to this heading">#</a></h3>
+<p>Dataset <strong>Telco Customer Churn</strong> memiliki 7.043 baris dan 21 kolom. Kolom <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> bertipe string karena terdapat nilai kosong (spasi) yang tidak terdeteksi secara otomatis. Setelah konversi ke numerik menggunakan <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(...,</span> <span class="pre">errors='coerce')</span></code>, ditemukan <strong>11 missing values</strong> pada kolom <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Telco-Customer-Churn.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah missing values per kolom:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TotalCharges</span>    <span class="mi">11</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<p><strong>Data baris yang mengandung missing values:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>customerID</p></th>
+<th class="head"><p>tenure</p></th>
+<th class="head"><p>MonthlyCharges</p></th>
+<th class="head"><p>TotalCharges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4472-LVYGI</p></td>
+<td><p>0</p></td>
+<td><p>52.55</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-odd"><td><p>3115-CZMZD</p></td>
+<td><p>0</p></td>
+<td><p>20.25</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>5709-LVOEQ</p></td>
+<td><p>0</p></td>
+<td><p>80.85</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-odd"><td><p>4367-NUYAO</p></td>
+<td><p>0</p></td>
+<td><p>25.75</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>1371-DWPAZ</p></td>
+<td><p>0</p></td>
+<td><p>56.05</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-odd"><td><p>7644-OMVMY</p></td>
+<td><p>0</p></td>
+<td><p>19.85</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>3213-VVOLG</p></td>
+<td><p>0</p></td>
+<td><p>25.35</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-odd"><td><p>2520-SGTTA</p></td>
+<td><p>0</p></td>
+<td><p>20.00</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>2923-ARZLG</p></td>
+<td><p>0</p></td>
+<td><p>19.70</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-odd"><td><p>4075-WKNIU</p></td>
+<td><p>0</p></td>
+<td><p>73.35</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>2775-SEFEE</p></td>
+<td><p>0</p></td>
+<td><p>61.90</p></td>
+<td><p>NaN</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Catatan:</strong> Semua baris missing memiliki <code class="docutils literal notranslate"><span class="pre">tenure</span> <span class="pre">=</span> <span class="pre">0</span></code>, artinya pelanggan baru yang belum memiliki riwayat pembayaran total.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="konsep-wknn-weighted-k-nearest-neighbor-imputation">
+<h3>1.2 Konsep WKNN (Weighted K-Nearest Neighbor Imputation)<a class="headerlink" href="#konsep-wknn-weighted-k-nearest-neighbor-imputation" title="Permalink to this heading">#</a></h3>
+<p><strong>WKNN</strong> adalah metode imputasi yang mencari <strong>K data terdekat</strong> (tetangga) dari data yang memiliki nilai lengkap, lalu menggunakan <strong>rata-rata berbobot</strong> untuk mengisi nilai yang hilang. Bobot setiap tetangga berbanding terbalik dengan jaraknya — semakin dekat jaraknya, semakin besar bobotnya.</p>
+<p><strong>Rumus Jarak Euclidean (ternormalisasi):</strong></p>
+<div class="math notranslate nohighlight">
+\[d(x_i, x_q) = \sqrt{\sum_{f=1}^{p} \left(\frac{x_{if} - x_{qf}}{range_f}\right)^2}\]</div>
+<p><strong>Rumus Bobot:</strong></p>
+<div class="math notranslate nohighlight">
+\[w_i = \frac{1}{d(x_i, x_q) + \epsilon}\]</div>
+<blockquote>
+<div><p>Nilai <span class="math notranslate nohighlight">\(\epsilon\)</span> (epsilon) sangat kecil (mis. <span class="math notranslate nohighlight">\(10^{-10}\)</span>) untuk menghindari pembagian dengan nol jika jarak = 0.</p>
+</div></blockquote>
+<p><strong>Rumus Nilai Imputasi:</strong></p>
+<div class="math notranslate nohighlight">
+\[\hat{x}_q = \frac{\sum_{i=1}^{K} w_i \cdot x_i}{\sum_{i=1}^{K} w_i}\]</div>
+</section>
+<hr class="docutils" />
+<section id="penyelesaian-manual-wknn-contoh-customerid-4472-lvygi">
+<h3>1.3 Penyelesaian Manual WKNN (Contoh: customerID = 4472-LVYGI)<a class="headerlink" href="#penyelesaian-manual-wknn-contoh-customerid-4472-lvygi" title="Permalink to this heading">#</a></h3>
+<p><strong>Data query (yang akan diimputasi):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tenure</span></code> = 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code> = 52.55</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> = <strong>NaN</strong> ← akan diisi</p></li>
+</ul>
+<p><strong>Langkah 1 — Normalisasi Min-Max pada fitur <code class="docutils literal notranslate"><span class="pre">tenure</span></code> dan <code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code>:</strong></p>
+<p>Dari seluruh data bersih (7.032 baris):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tenure</span></code>: min = 0, max = 72</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code>: min = 18.25, max = 118.75</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[tenure_{norm} = \frac{0 - 0}{72 - 0} = 0.0\]</div>
+<div class="math notranslate nohighlight">
+\[MonthlyCharges_{norm} = \frac{52.55 - 18.25}{118.75 - 18.25} = \frac{34.30}{100.50} \approx 0.3413\]</div>
+<p><strong>Vektor query ternormalisasi:</strong> <span class="math notranslate nohighlight">\(q = (0.0,\ 0.3413)\)</span></p>
+<p><strong>Langkah 2 — Hitung jarak Euclidean ke semua data bersih, ambil K=5 terdekat:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>customerID</p></th>
+<th class="head"><p>tenure</p></th>
+<th class="head"><p>MonthlyCharges</p></th>
+<th class="head"><p>TotalCharges</p></th>
+<th class="head"><p>Jarak (<span class="math notranslate nohighlight">\(d\)</span>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>4678-DVQEO</p></td>
+<td><p>1</p></td>
+<td><p>52.20</p></td>
+<td><p>52.20</p></td>
+<td><p>0.014509</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2386-LAHRK</p></td>
+<td><p>1</p></td>
+<td><p>53.50</p></td>
+<td><p>53.50</p></td>
+<td><p>0.016963</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4929-BSTRX</p></td>
+<td><p>1</p></td>
+<td><p>53.55</p></td>
+<td><p>53.55</p></td>
+<td><p>0.017245</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>9108-EJFJP</p></td>
+<td><p>1</p></td>
+<td><p>53.55</p></td>
+<td><p>53.55</p></td>
+<td><p>0.017245</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>9564-KCLHR</p></td>
+<td><p>1</p></td>
+<td><p>51.25</p></td>
+<td><p>51.25</p></td>
+<td><p>0.019123</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Langkah 3 — Hitung bobot <span class="math notranslate nohighlight">\(w_i = \frac{1}{d_i}\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[w_1 = \frac{1}{0.014509} = 68.92\]</div>
+<div class="math notranslate nohighlight">
+\[w_2 = \frac{1}{0.016963} = 58.95\]</div>
+<div class="math notranslate nohighlight">
+\[w_3 = \frac{1}{0.017245} = 57.99\]</div>
+<div class="math notranslate nohighlight">
+\[w_4 = \frac{1}{0.017245} = 57.99\]</div>
+<div class="math notranslate nohighlight">
+\[w_5 = \frac{1}{0.019123} = 52.29\]</div>
+<p><strong>Langkah 4 — Hitung nilai imputasi:</strong></p>
+<div class="math notranslate nohighlight">
+\[\hat{TotalCharges} = \frac{(68.92 \times 52.20) + (58.95 \times 53.50) + (57.99 \times 53.55) + (57.99 \times 53.55) + (52.29 \times 51.25)}{68.92 + 58.95 + 57.99 + 57.99 + 52.29}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{TotalCharges} = \frac{13318.87}{296.14} \approx \mathbf{52.82}\]</div>
+<blockquote>
+<div><p><strong>Hasil:</strong> Nilai <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> untuk customerID <code class="docutils literal notranslate"><span class="pre">4472-LVYGI</span></code> diisi dengan <strong>52.82</strong></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="code-lengkap-wknn-manual-full-imputation">
+<h3>1.4 Code Lengkap WKNN (Manual + Full Imputation)<a class="headerlink" href="#code-lengkap-wknn-manual-full-imputation" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># ── 1. Load data ──────────────────────────────────────────────────────────────</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Telco-Customer-Churn.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah missing values sebelum imputasi: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ── 2. Pisahkan data lengkap dan data missing ─────────────────────────────────</span>
+<span class="n">features</span>     <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tenure&#39;</span><span class="p">,</span> <span class="s1">&#39;MonthlyCharges&#39;</span><span class="p">]</span>   <span class="c1"># Fitur untuk menghitung jarak</span>
+<span class="n">target_col</span>   <span class="o">=</span> <span class="s1">&#39;TotalCharges&#39;</span>                 <span class="c1"># Kolom yang akan diimputasi</span>
+
+<span class="n">data_clean</span>   <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">target_col</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data_missing</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># ── 3. Normalisasi Min-Max pada fitur ─────────────────────────────────────────</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">clean_scaled</span>   <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_clean</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>
+<span class="n">missing_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_missing</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>
+
+<span class="c1"># ── 4. Fungsi WKNN ────────────────────────────────────────────────────────────</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wknn_impute</span><span class="p">(</span><span class="n">query_vec</span><span class="p">,</span> <span class="n">clean_scaled</span><span class="p">,</span> <span class="n">clean_target</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Menghitung nilai imputasi menggunakan WKNN.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    query_vec    : array, vektor fitur ternormalisasi dari data missing</span>
+<span class="sd">    clean_scaled : array, matriks fitur ternormalisasi dari data bersih</span>
+<span class="sd">    clean_target : array, nilai target (TotalCharges) dari data bersih</span>
+<span class="sd">    k            : int, jumlah tetangga terdekat</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float : nilai imputasi hasil rata-rata berbobot</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Hitung jarak Euclidean ke semua data bersih</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">clean_scaled</span> <span class="o">-</span> <span class="n">query_vec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># Ambil K tetangga terdekat</span>
+    <span class="n">nearest_idx</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">distances</span><span class="p">)[:</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">nearest_dist</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">nearest_idx</span><span class="p">]</span>
+    <span class="n">nearest_vals</span> <span class="o">=</span> <span class="n">clean_target</span><span class="p">[</span><span class="n">nearest_idx</span><span class="p">]</span>
+    
+    <span class="c1"># Hitung bobot: w = 1 / (d + epsilon)</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">nearest_dist</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span>
+    
+    <span class="c1"># Rata-rata berbobot</span>
+    <span class="n">imputed_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span> <span class="o">*</span> <span class="n">nearest_vals</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">imputed_value</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># ── 5. Lakukan imputasi untuk semua baris missing ─────────────────────────────</span>
+<span class="n">clean_target</span> <span class="o">=</span> <span class="n">data_clean</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Proses Imputasi WKNN (K=5) ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_missing</span><span class="p">)):</span>
+    <span class="n">query_vec</span>     <span class="o">=</span> <span class="n">missing_scaled</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">imputed_value</span> <span class="o">=</span> <span class="n">wknn_impute</span><span class="p">(</span><span class="n">query_vec</span><span class="p">,</span> <span class="n">clean_scaled</span><span class="p">,</span> <span class="n">clean_target</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">row_index</span>     <span class="o">=</span> <span class="n">data_missing</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;customerID: </span><span class="si">{</span><span class="n">data_missing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;customerID&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> | &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;tenure: </span><span class="si">{</span><span class="n">data_missing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;tenure&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;3</span><span class="si">}</span><span class="s2"> | &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;MonthlyCharges: </span><span class="si">{</span><span class="n">data_missing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;MonthlyCharges&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.2f</span><span class="si">}</span><span class="s2"> | &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;TotalCharges (imputasi): </span><span class="si">{</span><span class="n">imputed_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_index</span><span class="p">,</span> <span class="n">target_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputed_value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah missing values setelah imputasi: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dataset siap digunakan ✅&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jumlah missing values sebelum imputasi: 11
+
+=== Proses Imputasi WKNN (K=5) ===
+customerID: 4472-LVYGI     | tenure:   0 | MonthlyCharges:  52.55 | TotalCharges (imputasi): 52.8197
+customerID: 3115-CZMZD     | tenure:   0 | MonthlyCharges:  20.25 | TotalCharges (imputasi): 19.9400
+customerID: 5709-LVOEQ     | tenure:   0 | MonthlyCharges:  80.85 | TotalCharges (imputasi): 80.3500
+customerID: 4367-NUYAO     | tenure:   0 | MonthlyCharges:  25.75 | TotalCharges (imputasi): 25.6960
+customerID: 1371-DWPAZ     | tenure:   0 | MonthlyCharges:  56.05 | TotalCharges (imputasi): 56.0500
+customerID: 7644-OMVMY     | tenure:   0 | MonthlyCharges:  19.85 | TotalCharges (imputasi): 19.8500
+customerID: 3213-VVOLG     | tenure:   0 | MonthlyCharges:  25.35 | TotalCharges (imputasi): 25.4367
+customerID: 2520-SGTTA     | tenure:   0 | MonthlyCharges:  20.00 | TotalCharges (imputasi): 20.0000
+customerID: 2923-ARZLG     | tenure:   0 | MonthlyCharges:  19.70 | TotalCharges (imputasi): 19.7000
+customerID: 4075-WKNIU     | tenure:   0 | MonthlyCharges:  73.35 | TotalCharges (imputasi): 73.5500
+customerID: 2775-SEFEE     | tenure:   0 | MonthlyCharges:  61.90 | TotalCharges (imputasi): 61.9000
+
+Jumlah missing values setelah imputasi: 0
+Dataset siap digunakan ✅
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="normalisasi-data">
+<h2>2. Normalisasi Data<a class="headerlink" href="#normalisasi-data" title="Permalink to this heading">#</a></h2>
+<section id="pengertian-normalisasi-data">
+<h3>2.1 Pengertian Normalisasi Data<a class="headerlink" href="#pengertian-normalisasi-data" title="Permalink to this heading">#</a></h3>
+<p><strong>Normalisasi data</strong> adalah proses transformasi nilai-nilai atribut numerik ke dalam skala tertentu agar setiap fitur memiliki kontribusi yang setara dalam proses analisis atau pemodelan. Normalisasi penting dilakukan karena perbedaan skala antar fitur dapat menyebabkan fitur dengan nilai besar mendominasi perhitungan, terutama pada algoritma berbasis jarak seperti <strong>KNN, K-Means, SVM</strong>, dan <strong>Neural Network</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="macam-macam-normalisasi-data">
+<h3>2.2 Macam-Macam Normalisasi Data<a class="headerlink" href="#macam-macam-normalisasi-data" title="Permalink to this heading">#</a></h3>
+<p>Terdapat empat metode normalisasi yang umum digunakan:</p>
+<hr class="docutils" />
+<section id="a-min-max-normalization-normalisasi-min-max">
+<h4>A. Min-Max Normalization (Normalisasi Min-Max)<a class="headerlink" href="#a-min-max-normalization-normalisasi-min-max" title="Permalink to this heading">#</a></h4>
+<p><strong>Konsep:</strong> Mengubah nilai ke dalam rentang <strong>[0, 1]</strong> berdasarkan nilai minimum dan maksimum.</p>
+<p><strong>Rumus:</strong></p>
+<div class="math notranslate nohighlight">
+\[x' = \frac{x - x_{min}}{x_{max} - x_{min}}\]</div>
+<p><strong>Kapan digunakan:</strong></p>
+<ul class="simple">
+<li><p>Ketika distribusi data diketahui dan tidak mengandung outlier ekstrem</p></li>
+<li><p>Algoritma yang membutuhkan input dalam rentang tetap (mis. Neural Network, KNN)</p></li>
+</ul>
+<p><strong>Kelebihan:</strong> Mudah dipahami, output selalu dalam [0,1]<br />
+<strong>Kekurangan:</strong> Sangat sensitif terhadap outlier</p>
+</section>
+<hr class="docutils" />
+<section id="b-z-score-standardization-standardisasi-z-score">
+<h4>B. Z-Score Standardization (Standardisasi Z-Score)<a class="headerlink" href="#b-z-score-standardization-standardisasi-z-score" title="Permalink to this heading">#</a></h4>
+<p><strong>Konsep:</strong> Mengubah nilai sehingga memiliki <strong>rata-rata = 0</strong> dan <strong>standar deviasi = 1</strong>.</p>
+<p><strong>Rumus:</strong></p>
+<div class="math notranslate nohighlight">
+\[x' = \frac{x - \mu}{\sigma}\]</div>
+<p>di mana <span class="math notranslate nohighlight">\(\mu\)</span> = rata-rata dan <span class="math notranslate nohighlight">\(\sigma\)</span> = standar deviasi.</p>
+<p><strong>Kapan digunakan:</strong></p>
+<ul class="simple">
+<li><p>Ketika data mendekati distribusi normal</p></li>
+<li><p>Algoritma berbasis asumsi distribusi normal (mis. Regresi Logistik, SVM, PCA)</p></li>
+</ul>
+<p><strong>Kelebihan:</strong> Tidak terpengaruh oleh outlier sebesar Min-Max<br />
+<strong>Kekurangan:</strong> Output tidak terbatas pada rentang tertentu</p>
+</section>
+<hr class="docutils" />
+<section id="c-decimal-scaling-penskalaan-desimal">
+<h4>C. Decimal Scaling (Penskalaan Desimal)<a class="headerlink" href="#c-decimal-scaling-penskalaan-desimal" title="Permalink to this heading">#</a></h4>
+<p><strong>Konsep:</strong> Membagi nilai dengan pangkat 10 yang sesuai sehingga nilai absolut terbesar berada di bawah 1.</p>
+<p><strong>Rumus:</strong></p>
+<div class="math notranslate nohighlight">
+\[x' = \frac{x}{10^j} \quad \text{di mana } j \text{ adalah jumlah digit dari nilai maksimum absolut}\]</div>
+<p><strong>Kapan digunakan:</strong></p>
+<ul class="simple">
+<li><p>Data dengan satuan besar (ribuan, jutaan)</p></li>
+<li><p>Metode yang paling sederhana dan mudah diimplementasikan manual</p></li>
+</ul>
+<p><strong>Kelebihan:</strong> Sangat mudah diimplementasikan<br />
+<strong>Kekurangan:</strong> Tidak mempertimbangkan distribusi data</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-sebelum-normalisasi">
+<h3>2.3 Data Sebelum Normalisasi<a class="headerlink" href="#data-sebelum-normalisasi" title="Permalink to this heading">#</a></h3>
+<p>Menggunakan kolom numerik: <code class="docutils literal notranslate"><span class="pre">tenure</span></code>, <code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code>, <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> (setelah imputasi WKNN).</p>
+<p><strong>5 baris pertama data asli:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>tenure</p></th>
+<th class="head"><p>MonthlyCharges</p></th>
+<th class="head"><p>TotalCharges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>29.85</p></td>
+<td><p>29.85</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>34</p></td>
+<td><p>56.95</p></td>
+<td><p>1889.50</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>53.85</p></td>
+<td><p>108.15</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>45</p></td>
+<td><p>42.30</p></td>
+<td><p>1840.75</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>70.70</p></td>
+<td><p>151.65</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="hasil-normalisasi-data">
+<h3>2.4 Hasil Normalisasi Data<a class="headerlink" href="#hasil-normalisasi-data" title="Permalink to this heading">#</a></h3>
+<section id="a-hasil-min-max-normalization">
+<h4>A. Hasil Min-Max Normalization<a class="headerlink" href="#a-hasil-min-max-normalization" title="Permalink to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>tenure</p></th>
+<th class="head"><p>MonthlyCharges</p></th>
+<th class="head"><p>TotalCharges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0.000000</p></td>
+<td><p>0.000000</p></td>
+<td><p>0.000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0.750000</p></td>
+<td><p>0.663403</p></td>
+<td><p>1.000000</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0.022727</p></td>
+<td><p>0.587515</p></td>
+<td><p>0.042105</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>1.000000</p></td>
+<td><p>0.304774</p></td>
+<td><p>0.973785</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0.022727</p></td>
+<td><p>1.000000</p></td>
+<td><p>0.065496</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Semua nilai berada dalam rentang <strong>[0, 1]</strong></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="b-hasil-z-score-standardization">
+<h4>B. Hasil Z-Score Standardization<a class="headerlink" href="#b-hasil-z-score-standardization" title="Permalink to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>tenure</p></th>
+<th class="head"><p>MonthlyCharges</p></th>
+<th class="head"><p>TotalCharges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>-0.837681</p></td>
+<td><p>-1.511407</p></td>
+<td><p>-0.892433</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0.911906</p></td>
+<td><p>0.450237</p></td>
+<td><p>1.251410</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>-0.784663</p></td>
+<td><p>0.225842</p></td>
+<td><p>-0.802168</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>1.495101</p></td>
+<td><p>-0.610209</p></td>
+<td><p>1.195210</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>-0.784663</p></td>
+<td><p>1.445536</p></td>
+<td><p>-0.752020</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Nilai negatif berarti di <strong>bawah rata-rata</strong>, nilai positif berarti di <strong>atas rata-rata</strong></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="c-hasil-decimal-scaling">
+<h4>C. Hasil Decimal Scaling<a class="headerlink" href="#c-hasil-decimal-scaling" title="Permalink to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>tenure</p></th>
+<th class="head"><p>MonthlyCharges</p></th>
+<th class="head"><p>TotalCharges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0.01</p></td>
+<td><p>0.2985</p></td>
+<td><p>0.002985</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0.34</p></td>
+<td><p>0.5695</p></td>
+<td><p>0.188950</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0.02</p></td>
+<td><p>0.5385</p></td>
+<td><p>0.010815</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0.45</p></td>
+<td><p>0.4230</p></td>
+<td><p>0.184075</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0.02</p></td>
+<td><p>0.7070</p></td>
+<td><p>0.015165</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Dibagi dengan <span class="math notranslate nohighlight">\(10^2 = 100\)</span> untuk <code class="docutils literal notranslate"><span class="pre">tenure</span></code>, <span class="math notranslate nohighlight">\(10^2 = 100\)</span> untuk <code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code>, dan <span class="math notranslate nohighlight">\(10^4 = 10000\)</span> untuk <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code></p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="code-normalisasi-data-menggunakan-sklearn">
+<h3>2.5 Code Normalisasi Data (Menggunakan sklearn)<a class="headerlink" href="#code-normalisasi-data-menggunakan-sklearn" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># ── Load data (setelah imputasi WKNN) ─────────────────────────────────────────</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Telco-Customer-Churn.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCharges&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="c1"># (Asumsikan imputasi WKNN telah dilakukan sebelumnya)</span>
+<span class="c1"># df[&#39;TotalCharges&#39;] sudah tidak ada missing values</span>
+
+<span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tenure&#39;</span><span class="p">,</span> <span class="s1">&#39;MonthlyCharges&#39;</span><span class="p">,</span> <span class="s1">&#39;TotalCharges&#39;</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Asli (5 baris pertama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># ── A. Min-Max Normalization ───────────────────────────────────────────────────</span>
+<span class="n">scaler_minmax</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">data_minmax</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">scaler_minmax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">num_cols</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[A] Min-Max Normalization (range [0,1]):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_minmax</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># ── B. Z-Score Standardization ────────────────────────────────────────────────</span>
+<span class="n">scaler_zscore</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">data_zscore</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">scaler_zscore</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">num_cols</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[B] Z-Score Standardization (mean=0, std=1):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_zscore</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># ── C. Decimal Scaling (fungsi manual) ────────────────────────────────────────</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">decimal_scaling</span><span class="p">(</span><span class="n">df_input</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Melakukan decimal scaling pada setiap kolom numerik.</span>
+<span class="sd">    Nilai dibagi dengan 10^j, di mana j adalah jumlah digit</span>
+<span class="sd">    dari nilai absolut terbesar pada kolom tersebut.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">df_input</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">max_abs</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_abs</span><span class="p">)))</span>          <span class="c1"># Jumlah digit nilai maks</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="n">j</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Kolom &#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&#39;: nilai maks = </span><span class="si">{</span><span class="n">max_abs</span><span class="si">}</span><span class="s2">, j = </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">, dibagi </span><span class="si">{</span><span class="mi">10</span><span class="o">**</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[C] Decimal Scaling (fungsi manual):&quot;</span><span class="p">)</span>
+<span class="n">data_decimal</span> <span class="o">=</span> <span class="n">decimal_scaling</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_decimal</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Data</span> <span class="n">Asli</span> <span class="p">(</span><span class="mi">5</span> <span class="n">baris</span> <span class="n">pertama</span><span class="p">):</span>
+   <span class="n">tenure</span>  <span class="n">MonthlyCharges</span>  <span class="n">TotalCharges</span>
+<span class="mi">0</span>       <span class="mi">1</span>           <span class="mf">29.85</span>         <span class="mf">29.85</span>
+<span class="mi">1</span>      <span class="mi">34</span>           <span class="mf">56.95</span>       <span class="mf">1889.50</span>
+<span class="mi">2</span>       <span class="mi">2</span>           <span class="mf">53.85</span>        <span class="mf">108.15</span>
+<span class="mi">3</span>      <span class="mi">45</span>           <span class="mf">42.30</span>       <span class="mf">1840.75</span>
+<span class="mi">4</span>       <span class="mi">2</span>           <span class="mf">70.70</span>        <span class="mf">151.65</span>
+
+<span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="n">Min</span><span class="o">-</span><span class="n">Max</span> <span class="n">Normalization</span> <span class="p">(</span><span class="nb">range</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]):</span>
+     <span class="n">tenure</span>  <span class="n">MonthlyCharges</span>  <span class="n">TotalCharges</span>
+<span class="mi">0</span>  <span class="mf">0.000000</span>        <span class="mf">0.000000</span>      <span class="mf">0.000000</span>
+<span class="mi">1</span>  <span class="mf">0.750000</span>        <span class="mf">0.663403</span>      <span class="mf">1.000000</span>
+<span class="mi">2</span>  <span class="mf">0.022727</span>        <span class="mf">0.587515</span>      <span class="mf">0.042105</span>
+<span class="mi">3</span>  <span class="mf">1.000000</span>        <span class="mf">0.304774</span>      <span class="mf">0.973785</span>
+<span class="mi">4</span>  <span class="mf">0.022727</span>        <span class="mf">1.000000</span>      <span class="mf">0.065496</span>
+
+<span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="n">Z</span><span class="o">-</span><span class="n">Score</span> <span class="n">Standardization</span> <span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+     <span class="n">tenure</span>  <span class="n">MonthlyCharges</span>  <span class="n">TotalCharges</span>
+<span class="mi">0</span> <span class="o">-</span><span class="mf">0.837681</span>       <span class="o">-</span><span class="mf">1.511407</span>     <span class="o">-</span><span class="mf">0.892433</span>
+<span class="mi">1</span>  <span class="mf">0.911906</span>        <span class="mf">0.450237</span>      <span class="mf">1.251410</span>
+<span class="mi">2</span> <span class="o">-</span><span class="mf">0.784663</span>        <span class="mf">0.225842</span>     <span class="o">-</span><span class="mf">0.802168</span>
+<span class="mi">3</span>  <span class="mf">1.495101</span>       <span class="o">-</span><span class="mf">0.610209</span>      <span class="mf">1.195210</span>
+<span class="mi">4</span> <span class="o">-</span><span class="mf">0.784663</span>        <span class="mf">1.445536</span>     <span class="o">-</span><span class="mf">0.752020</span>
+
+<span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="n">Robust</span> <span class="n">Scaling</span> <span class="p">(</span><span class="n">menggunakan</span> <span class="n">median</span> <span class="o">&amp;</span> <span class="n">IQR</span><span class="p">):</span>
+    <span class="n">tenure</span>  <span class="n">MonthlyCharges</span>  <span class="n">TotalCharges</span>
+<span class="mi">0</span> <span class="o">-</span><span class="mf">0.03125</span>       <span class="o">-</span><span class="mf">1.638225</span>     <span class="o">-</span><span class="mf">0.070299</span>
+<span class="mi">1</span>  <span class="mf">1.00000</span>        <span class="mf">0.211604</span>      <span class="mf">1.003030</span>
+<span class="mi">2</span>  <span class="mf">0.00000</span>        <span class="mf">0.000000</span>     <span class="o">-</span><span class="mf">0.025107</span>
+<span class="mi">3</span>  <span class="mf">1.34375</span>       <span class="o">-</span><span class="mf">0.788396</span>      <span class="mf">0.974893</span>
+<span class="mi">4</span>  <span class="mf">0.00000</span>        <span class="mf">1.150171</span>      <span class="mf">0.000000</span>
+
+<span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="n">Decimal</span> <span class="n">Scaling</span> <span class="p">(</span><span class="n">fungsi</span> <span class="n">manual</span><span class="p">):</span>
+  <span class="n">Kolom</span> <span class="s1">&#39;tenure&#39;</span><span class="p">:</span> <span class="n">nilai</span> <span class="n">maks</span> <span class="o">=</span> <span class="mf">72.0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dibagi</span> <span class="mi">100</span>
+  <span class="n">Kolom</span> <span class="s1">&#39;MonthlyCharges&#39;</span><span class="p">:</span> <span class="n">nilai</span> <span class="n">maks</span> <span class="o">=</span> <span class="mf">118.75</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dibagi</span> <span class="mi">1000</span>
+  <span class="n">Kolom</span> <span class="s1">&#39;TotalCharges&#39;</span><span class="p">:</span> <span class="n">nilai</span> <span class="n">maks</span> <span class="o">=</span> <span class="mf">8684.8</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dibagi</span> <span class="mi">10000</span>
+   <span class="n">tenure</span>  <span class="n">MonthlyCharges</span>  <span class="n">TotalCharges</span>
+<span class="mi">0</span>    <span class="mf">0.01</span>        <span class="mf">0.02985</span>      <span class="mf">0.002985</span>
+<span class="mi">1</span>    <span class="mf">0.34</span>        <span class="mf">0.05695</span>      <span class="mf">0.188950</span>
+<span class="mi">2</span>    <span class="mf">0.02</span>        <span class="mf">0.05385</span>      <span class="mf">0.010815</span>
+<span class="mi">3</span>    <span class="mf">0.45</span>        <span class="mf">0.04230</span>      <span class="mf">0.184075</span>
+<span class="mi">4</span>    <span class="mf">0.02</span>        <span class="mf">0.07070</span>      <span class="mf">0.015165</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="perbandingan-metode-normalisasi">
+<h3>2.6 Perbandingan Metode Normalisasi<a class="headerlink" href="#perbandingan-metode-normalisasi" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metode</p></th>
+<th class="head"><p>Rumus</p></th>
+<th class="head"><p>Output Range</p></th>
+<th class="head"><p>Sensitif Outlier</p></th>
+<th class="head"><p>Cocok Untuk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Min-Max</p></td>
+<td><p>(x − min) / (max − min)</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>✅ Ya</p></td>
+<td><p>KNN, Neural Network</p></td>
+</tr>
+<tr class="row-odd"><td><p>Z-Score</p></td>
+<td><p>(x − μ) / σ</p></td>
+<td><p>Tidak terbatas</p></td>
+<td><p>⚠️ Sedang</p></td>
+<td><p>PCA, Regresi, SVM</p></td>
+</tr>
+<tr class="row-even"><td><p>Decimal Scaling</p></td>
+<td><p>x / 10^j</p></td>
+<td><p>(-1, 1)</p></td>
+<td><p>✅ Ya</p></td>
+<td><p>Data dengan satuan besar</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h3>2.7 Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Missing Values</strong> pada kolom <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> (11 baris) berhasil diimputasi menggunakan metode <strong>WKNN dengan K=5</strong>, memanfaatkan fitur <code class="docutils literal notranslate"><span class="pre">tenure</span></code> dan <code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code> sebagai penentu jarak. Pendekatan ini lebih akurat dibandingkan imputasi dengan rata-rata karena mempertimbangkan kemiripan data antar pelanggan.</p></li>
+<li><p><strong>Normalisasi data</strong> dilakukan pada kolom <code class="docutils literal notranslate"><span class="pre">tenure</span></code>, <code class="docutils literal notranslate"><span class="pre">MonthlyCharges</span></code>, dan <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> menggunakan tiga metode: <strong>Min-Max Normalization</strong>, <strong>Z-Score Standardization</strong>, dan <strong>Decimal Scaling</strong>. Untuk dataset Telco Customer Churn yang akan digunakan dalam algoritma berbasis jarak (KNN, Clustering), <strong>Min-Max Normalization</strong> paling direkomendasikan karena menghasilkan skala yang seragam dalam rentang [0,1].</p></li>
+</ol>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -771,6 +1498,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-dan-integrasi-sumber-data">2.1 Identifikasi dan Integrasi Sumber Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-statistik-dan-visualisasi">2.2 Eksplorasi Statistik dan Visualisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kualitas-data">2.3 Analisis Kualitas Data</a></li>
@@ -811,6 +1539,40 @@ Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘pet
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proyek-missing-values-imputation-normalisasi-data">Proyek: Missing Values Imputation + Normalisasi Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-telco-customer-churn">Dataset: Telco Customer Churn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values-imputasi-dengan-wknn-weighted-k-nearest-neighbor">1. Missing Values — Imputasi dengan WKNN (Weighted K-Nearest Neighbor)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-missing-values">1.1 Identifikasi Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-wknn-weighted-k-nearest-neighbor-imputation">1.2 Konsep WKNN (Weighted K-Nearest Neighbor Imputation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-manual-wknn-contoh-customerid-4472-lvygi">1.3 Penyelesaian Manual WKNN (Contoh: customerID = 4472-LVYGI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-lengkap-wknn-manual-full-imputation">1.4 Code Lengkap WKNN (Manual + Full Imputation)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data">2. Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-normalisasi-data">2.1 Pengertian Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-normalisasi-data">2.2 Macam-Macam Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-min-max-normalization-normalisasi-min-max">A. Min-Max Normalization (Normalisasi Min-Max)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-z-score-standardization-standardisasi-z-score">B. Z-Score Standardization (Standardisasi Z-Score)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-decimal-scaling-penskalaan-desimal">C. Decimal Scaling (Penskalaan Desimal)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sebelum-normalisasi">2.3 Data Sebelum Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-data">2.4 Hasil Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-hasil-min-max-normalization">A. Hasil Min-Max Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-hasil-z-score-standardization">B. Hasil Z-Score Standardization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hasil-decimal-scaling">C. Hasil Decimal Scaling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-normalisasi-data-menggunakan-sklearn">2.5 Code Normalisasi Data (Menggunakan sklearn)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-metode-normalisasi">2.6 Perbandingan Metode Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">2.7 Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
