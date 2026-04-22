@@ -694,6 +694,8 @@ Deni   (nilai=55) | d=0.3777 | w=2.6476 | w×v=145.62
 Nilai_Tugas Gina = 1522.17 / 22.6630 = 67.16
 ```
 
+
+
 # UTS
 # Analisis Data Kesuburan Tanah
 
