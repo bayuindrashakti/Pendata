@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Data Understanding &#8212; My sample book</title>
   
@@ -17,60 +16,60 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Data Understanding';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data_Understanding';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Preparation" href="Data%20Preparation.html" />
-    <link rel="prev" title="Business Understanding" href="Business%20Understanding.html" />
+    <link rel="next" title="Modeling" href="Modelling.html" />
+    <link rel="prev" title="Business Understanding" href="Business_Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,19 +85,8 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -106,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -114,8 +101,8 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -131,7 +118,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -155,17 +143,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/logobayu.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logobayu.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
   
+    <p class="title logo__title">My sample book</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,12 +165,12 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Business%20Understanding.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Business Understanding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20Preparation.html">Data Preparation</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="Modelling.html">Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deployment.html">Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Baru.html">dkjfhsjhmfkdsf</a></li>
 </ul>
 
     </div>
@@ -190,9 +179,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -211,9 +205,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -253,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FData Understanding.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FData_Understanding.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +277,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/Data Understanding.md" target="_blank"
+      <li><a href="_sources/Data_Understanding.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -336,27 +330,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -377,6 +363,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-dan-integrasi-sumber-data">2.1 Identifikasi dan Integrasi Sumber Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-statistik-dan-visualisasi">2.2 Eksplorasi Statistik dan Visualisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kualitas-data">2.3 Analisis Kualitas Data</a></li>
@@ -447,6 +434,59 @@ Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘pet
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uts">UTS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-kesuburan-tanah">Analisis Data Kesuburan Tanah</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-klasifikasi-kesuburan-tanah">Dataset Klasifikasi Kesuburan Tanah</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-umum">Deskripsi Umum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset">Informasi Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur">Penjelasan Fitur</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ph-tanah">1. pH Tanah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-total">2. N Total (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-tersedia-ppm">3. P Tersedia (ppm)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-tersedia-meq-100g">4. K Tersedia (meq/100g)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-organik">5. C Organik (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ktk-meq-100g">6. KTK (meq/100g)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kejenuhan-basa">7. Kejenuhan Basa (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tekstur-tanah">8. Tekstur Tanah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kadar-air">9. Kadar Air (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-density-g-cm3">10. Bulk Density (g/cm³)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-kelas">Definisi Kelas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas">Distribusi Kelas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemrosesan-data">Pemrosesan Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-fitur-kategorikal">Encoding Fitur Kategorikal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label">Encoding Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi">Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-data-train-test-split">Pembagian Data (Train/Test Split)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-k-nearest-neighbors-knn">Analisis K-Nearest Neighbors (KNN)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-model">Konfigurasi Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-euclidean-distance">Rumus Euclidean Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">Metrik Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil">Hasil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metrik">Penjelasan Metrik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">Classification Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#urutan-langkah-analisis-pipeline">Urutan Langkah Analisis (Pipeline)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -458,11 +498,11 @@ Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘pet
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
-<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Permalink to this heading">#</a></h1>
+<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
 <p>Data Understanding bertujuan untuk memahami kondisi, struktur, kualitas, dan potensi dataset sebelum dilakukan pemodelan.
 Data merupakan representasi dari realitas bisnis. Oleh karena itu, pemahaman terhadap data berarti memahami perilaku sistem atau pelanggan yang direpresentasikan.</p>
 <section id="identifikasi-dan-integrasi-sumber-data">
-<h2>2.1 Identifikasi dan Integrasi Sumber Data<a class="headerlink" href="#identifikasi-dan-integrasi-sumber-data" title="Permalink to this heading">#</a></h2>
+<h2>2.1 Identifikasi dan Integrasi Sumber Data<a class="headerlink" href="#identifikasi-dan-integrasi-sumber-data" title="Link to this heading">#</a></h2>
 <p>Data dapat berasal dari berbagai sistem:
 Sistem transaksi
 Data pelanggan
@@ -477,7 +517,7 @@ Konsistensi antar sumber
 Integrasi data sering menjadi tantangan karena perbedaan struktur dan format.</p>
 </section>
 <section id="eksplorasi-statistik-dan-visualisasi">
-<h2>2.2 Eksplorasi Statistik dan Visualisasi<a class="headerlink" href="#eksplorasi-statistik-dan-visualisasi" title="Permalink to this heading">#</a></h2>
+<h2>2.2 Eksplorasi Statistik dan Visualisasi<a class="headerlink" href="#eksplorasi-statistik-dan-visualisasi" title="Link to this heading">#</a></h2>
 <p>Eksplorasi data dilakukan untuk memahami karakteristik statistik dataset, seperti:
 Rata-rata dan median
 Distribusi nilai
@@ -490,7 +530,7 @@ Pola musiman
 Misalnya, dalam analisis penjualan, dapat ditemukan bahwa transaksi meningkat tajam pada akhir bulan atau saat promosi tertentu.</p>
 </section>
 <section id="analisis-kualitas-data">
-<h2>2.3 Analisis Kualitas Data<a class="headerlink" href="#analisis-kualitas-data" title="Permalink to this heading">#</a></h2>
+<h2>2.3 Analisis Kualitas Data<a class="headerlink" href="#analisis-kualitas-data" title="Link to this heading">#</a></h2>
 <p>Kualitas data sangat memengaruhi performa model. Beberapa aspek yang dianalisis:
 Missing values dan pola kemunculannya
 Duplikasi data
@@ -500,58 +540,58 @@ Jika data churn hanya 5% dari total dataset, maka model mungkin cenderung mempre
 Tahap Data Understanding memberikan gambaran realistis mengenai kekuatan dan keterbatasan dataset sebelum masuk ke tahap teknis berikutnya.</p>
 </section>
 <section id="eksplorasi-tugas">
-<h2>Eksplorasi/Tugas<a class="headerlink" href="#eksplorasi-tugas" title="Permalink to this heading">#</a></h2>
+<h2>Eksplorasi/Tugas<a class="headerlink" href="#eksplorasi-tugas" title="Link to this heading">#</a></h2>
 <section id="korelasi-antara-sepal-width-dan-sepal-length">
-<h3>korelasi antara sepal_width dan sepal_length<a class="headerlink" href="#korelasi-antara-sepal-width-dan-sepal-length" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar1" src="_images/tugas1.png" /></p>
+<h3>korelasi antara sepal_width dan sepal_length<a class="headerlink" href="#korelasi-antara-sepal-width-dan-sepal-length" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar1" src="gambartugas1/tugas1.png" /></p>
 <p>Dari gambar di atas menunjukkan korelasi antara sepal_widh dan sepal_length sangat lemah atau tidak ada korelasi, dikarenakan Titik-titik data tersebar tanpa membentuk pola yang jelas, menunjukkan bahwa tidak ada hubungan yang kuat antara sepal length dan sepal width. artinya Kedua variabel ini dapat dianggap sebagai fitur yang berdiri sendiri dan tidak saling mempengaruhi secara linear.</p>
 </section>
 <section id="korelasi-antara-petal-width-dan-petal-length">
-<h3>korelasi antara petal_width dan petal_length<a class="headerlink" href="#korelasi-antara-petal-width-dan-petal-length" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar2" src="_images/tugas2.png" /></p>
+<h3>korelasi antara petal_width dan petal_length<a class="headerlink" href="#korelasi-antara-petal-width-dan-petal-length" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar2" src="gambartugas1/tugas2.png" /></p>
 <p>dari gambar di atas menunjukkan korelasi antara petal_width dan petal_length sangat kuat, dikarenakan Titik-titik data membentuk pola yang jelas dari kiri bawah ke kanan atas, menunjukkan bahwa semakin besar nilai petal_length, semakin besar pula nilai petal_width. artinya kedua variabel sangat rapat membentuk pola linear yang jelas. namun terdapat Dua cluster yang terpisah kemungkinan besar merepresentasikan iris yang berbeda, tetapi tidak menyebabkan ambigu.</p>
 </section>
 <section id="korelasi-antara-sepal-length-dan-petal-length">
-<h3>korelasi antara sepal_length dan petal_length<a class="headerlink" href="#korelasi-antara-sepal-length-dan-petal-length" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar3" src="_images/tugas3.png" /></p>
+<h3>korelasi antara sepal_length dan petal_length<a class="headerlink" href="#korelasi-antara-sepal-length-dan-petal-length" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar3" src="gambartugas1/tugas3.png" /></p>
 <p>Dari gambar di atas menunjukkan korelasi antara sepal_length dan petal_length sangat kuat, dikarenakan titik-titik data membentuk pola yang jelas dari kiri bawah ke kanan atas, menunjukkan bahwa semakin besar nilai sepal_length, semakin besar pula nilai petal_length. Artinya kedua variabel sangat rapat membentuk pola linear yang jelas. Namun terdapat dua cluster yang terpisah kemungkinan besar merepresentasikan iris yang berbeda, tetapi tidak menyebabkan ambigu.</p>
 </section>
 <section id="korelasi-antara-sepal-length-dan-petal-width">
-<h3>korelasi antara sepal_length dan petal_width<a class="headerlink" href="#korelasi-antara-sepal-length-dan-petal-width" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar3" src="_images/tugas3.png" /></p>
+<h3>korelasi antara sepal_length dan petal_width<a class="headerlink" href="#korelasi-antara-sepal-length-dan-petal-width" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar3" src="gambartugas1/tugas3.png" /></p>
 <p>Dari gambar di atas menunjukkan korelasi antara sepal_length dan petal_width sangat kuat, dikarenakan titik-titik data membentuk pola yang jelas dari kiri bawah ke kanan atas, menunjukkan bahwa semakin besar nilai sepal_length, semakin besar pula nilai petal_width. Artinya kedua variabel sangat rapat membentuk pola linear yang jelas. Namun terdapat dua cluster yang terpisah kemungkinan besar merepresentasikan iris yang berbeda, tetapi tidak menyebabkan ambigu.</p>
 </section>
 <section id="korelasi-antara-sepal-width-dan-petal-length">
-<h3>korelasi antara sepal_width dan petal_length<a class="headerlink" href="#korelasi-antara-sepal-width-dan-petal-length" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar4" src="_images/tugas4.png" /></p>
+<h3>korelasi antara sepal_width dan petal_length<a class="headerlink" href="#korelasi-antara-sepal-width-dan-petal-length" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar4" src="gambartugas1/tugas4.png" /></p>
 <p>Dari gambar di atas menunjukkan korelasi antara sepal_width dan petal_length cenderung lemah, dikarenakan titik-titik data tidak membentuk pola linear yang konsisten dari kiri bawah ke kanan atas. Terlihat adanya dua cluster yang sangat terpisah secara vertikal, di mana cluster bawah memiliki petal_length rendah dan cluster atas memiliki petal_length tinggi, namun dalam masing-masing cluster tidak ada hubungan yang jelas dengan sepal_width. Artinya kedua variabel tidak menunjukkan pola yang rapat dan penyebaran data relatif acak. Dua cluster yang terpisah ini kemungkinan besar merepresentasikan spesies iris yang berbeda dengan karakteristik yang sangat berbeda, dan pemisahan yang sangat jelas ini tidak menyebabkan ambigu.</p>
 </section>
 <section id="id1">
-<h3>korelasi antara sepal_width dan petal_length<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar5" src="_images/tugas5.png" /></p>
+<h3>korelasi antara sepal_width dan petal_length<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar5" src="gambartugas1/tugas5.png" /></p>
 <p>Dari gambar di atas menunjukkan korelasi antara sepal_width dan petal_length cenderung lemah, dikarenakan titik-titik data tidak membentuk pola linear yang konsisten dari kiri bawah ke kanan atas. Terlihat adanya dua cluster yang sangat terpisah secara vertikal, di mana cluster bawah memiliki petal_length rendah dan cluster atas memiliki petal_length tinggi, namun dalam masing-masing cluster tidak ada hubungan yang jelas dengan sepal_width. Artinya kedua variabel tidak menunjukkan pola yang rapat dan penyebaran data relatif acak. Dua cluster yang terpisah ini kemungkinan besar merepresentasikan spesies iris yang berbeda dengan karakteristik yang sangat berbeda, dan pemisahan yang sangat jelas ini tidak menyebabkan ambigu.</p>
 </section>
 <section id="korelasi-antara-sepal-width-dan-petal-width">
-<h3>korelasi antara sepal_width dan petal_width<a class="headerlink" href="#korelasi-antara-sepal-width-dan-petal-width" title="Permalink to this heading">#</a></h3>
-<p><img alt="Gambar6" src="_images/tugas6.png" /></p>
+<h3>korelasi antara sepal_width dan petal_width<a class="headerlink" href="#korelasi-antara-sepal-width-dan-petal-width" title="Link to this heading">#</a></h3>
+<p><img alt="Gambar6" src="gambartugas1/tugas6.png" /></p>
 <p>Dari gambar di atas menunjukkan korelasi antara sepal_width dan petal_width lemah atau tidak konsisten, dikarenakan titik-titik data tidak membentuk pola linear yang jelas dari kiri bawah ke kanan atas. Terlihat adanya dua cluster yang sangat terpisah secara vertikal, di mana cluster bawah memiliki petal_width sangat rendah dan cluster atas memiliki petal_width lebih tinggi, namun dalam masing-masing cluster penyebaran data relatif acak tanpa menunjukkan hubungan yang kuat dengan sepal_width. Artinya kedua variabel tidak membentuk pola linear yang rapat dan peningkatan sepal_width tidak diikuti oleh peningkatan petal_width secara konsisten. Dua cluster yang terpisah ini kemungkinan besar merepresentasikan spesies iris yang berbeda, dan pemisahan yang sangat jelas ini tidak menyebabkan ambigu.</p>
 </section>
 <section id="statistik-deskriptif">
-<h3>statistik deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Permalink to this heading">#</a></h3>
-<p><img alt="statistik" src="_images/statistik.jpg" /></p>
+<h3>statistik deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h3>
+<p><img alt="statistik" src="gambartugas1/statistik.jpg" /></p>
 <p>Berdasarkan tabel statistik deskriptif di atas, dataset Iris menunjukkan karakteristik yang menarik untuk setiap variabel pengukuran. Pada sepal_length, nilai rata-rata sebesar 5.84 cm sangat dekat dengan median 5.8 cm, mengindikasikan distribusi data yang relatif simetris dan terkonsentrasi di kisaran 5-6 cm dengan variasi yang kecil. Sementara itu, sepal_width memiliki mean 3.05 cm dengan median dan mode sama-sama bernilai 3 cm, menunjukkan bahwa lebar sepal cenderung homogen antar spesies dengan penyebaran data yang rapat. Berbeda dengan pengukuran sepal, variabel petal_length dan petal_width menunjukkan pola yang lebih kompleks. Nilai mode pada petal_length (1.5 cm) dan petal_width (0.2 cm) sangat berbeda dengan median masing-masing (4.35 cm dan 1.3 cm), yang mengindikasikan adanya distribusi bimodal atau dua kelompok data yang terpisah jelas. Hal ini diperkuat oleh nilai dispersi yang lebih tinggi pada petal_width (0.63) dibandingkan variabel lainnya, menunjukkan bahwa pengukuran petal memiliki variabilitas yang lebih besar dan lebih efektif untuk membedakan antar spesies.</p>
 </section>
 <section id="python-google-colab">
-<h3>python (google colab)<a class="headerlink" href="#python-google-colab" title="Permalink to this heading">#</a></h3>
+<h3>python (google colab)<a class="headerlink" href="#python-google-colab" title="Link to this heading">#</a></h3>
 <p>bukti screenshot</p>
-<p><img alt="screenshot" src="_images/buktiss.png" /></p>
+<p><img alt="screenshot" src="gambartugas1/buktiss.png" /></p>
 </section>
 <section id="link-program">
-<h3>link program<a class="headerlink" href="#link-program" title="Permalink to this heading">#</a></h3>
+<h3>link program<a class="headerlink" href="#link-program" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1xl65AHBp9bWO_wA2mRbTdoj_e6VPWey1?usp=sharing">https://colab.research.google.com/drive/1xl65AHBp9bWO_wA2mRbTdoj_e6VPWey1?usp=sharing</a></p>
 </section>
 <section id="kode-lengkap">
-<h3>kode lengkap<a class="headerlink" href="#kode-lengkap" title="Permalink to this heading">#</a></h3>
+<h3>kode lengkap<a class="headerlink" href="#kode-lengkap" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 
@@ -596,15 +636,15 @@ Tahap Data Understanding memberikan gambaran realistis mengenai kekuatan dan ket
 </div>
 </section>
 <section id="output">
-<h3>output<a class="headerlink" href="#output" title="Permalink to this heading">#</a></h3>
+<h3>output<a class="headerlink" href="#output" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="text-daftar-kolom-sepal-length-sepal-width-petal-length-petal-width-species">
 <h2>‘’’ text
-Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘petal_width’, ‘species’]<a class="headerlink" href="#text-daftar-kolom-sepal-length-sepal-width-petal-length-petal-width-species" title="Permalink to this heading">#</a></h2>
+Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘petal_width’, ‘species’]<a class="headerlink" href="#text-daftar-kolom-sepal-length-sepal-width-petal-length-petal-width-species" title="Link to this heading">#</a></h2>
 </section>
 <section id="statistik-untuk-kolom-sepal-length">
-<h2>Statistik untuk kolom: SEPAL_LENGTH<a class="headerlink" href="#statistik-untuk-kolom-sepal-length" title="Permalink to this heading">#</a></h2>
+<h2>Statistik untuk kolom: SEPAL_LENGTH<a class="headerlink" href="#statistik-untuk-kolom-sepal-length" title="Link to this heading">#</a></h2>
 <p>Jumlah data     : 150
 Rata-rata       : 5.84
 Nilai minimal   : 4.3
@@ -619,7 +659,7 @@ Variansi        : 0.69
 Nilai modus     : 5.0 dengan frekuensi 10</p>
 </section>
 <section id="statistik-untuk-kolom-sepal-width">
-<h2>Statistik untuk kolom: SEPAL_WIDTH<a class="headerlink" href="#statistik-untuk-kolom-sepal-width" title="Permalink to this heading">#</a></h2>
+<h2>Statistik untuk kolom: SEPAL_WIDTH<a class="headerlink" href="#statistik-untuk-kolom-sepal-width" title="Link to this heading">#</a></h2>
 <p>Jumlah data     : 150
 Rata-rata       : 3.05
 Nilai minimal   : 2.0
@@ -634,7 +674,7 @@ Variansi        : 0.19
 Nilai modus     : 3.0 dengan frekuensi 26</p>
 </section>
 <section id="statistik-untuk-kolom-petal-length">
-<h2>Statistik untuk kolom: PETAL_LENGTH<a class="headerlink" href="#statistik-untuk-kolom-petal-length" title="Permalink to this heading">#</a></h2>
+<h2>Statistik untuk kolom: PETAL_LENGTH<a class="headerlink" href="#statistik-untuk-kolom-petal-length" title="Link to this heading">#</a></h2>
 <p>Jumlah data     : 150
 Rata-rata       : 3.76
 Nilai minimal   : 1.0
@@ -649,7 +689,7 @@ Variansi        : 3.11
 Nilai modus     : 1.5 dengan frekuensi 14</p>
 </section>
 <section id="statistik-untuk-kolom-petal-width">
-<h2>Statistik untuk kolom: PETAL_WIDTH<a class="headerlink" href="#statistik-untuk-kolom-petal-width" title="Permalink to this heading">#</a></h2>
+<h2>Statistik untuk kolom: PETAL_WIDTH<a class="headerlink" href="#statistik-untuk-kolom-petal-width" title="Link to this heading">#</a></h2>
 <p>Jumlah data     : 150
 Rata-rata       : 1.20
 Nilai minimal   : 0.1
@@ -664,7 +704,7 @@ Variansi        : 0.58
 Nilai modus     : 0.2 dengan frekuensi 28</p>
 </section>
 <section id="statistik-untuk-kolom-species">
-<h2>🌸 Statistik untuk kolom: SPECIES<a class="headerlink" href="#statistik-untuk-kolom-species" title="Permalink to this heading">#</a></h2>
+<h2>🌸 Statistik untuk kolom: SPECIES<a class="headerlink" href="#statistik-untuk-kolom-species" title="Link to this heading">#</a></h2>
 <p>Jumlah data     : 150
 Jumlah unik     : 3
 Nilai unik      : [‘Iris-setosa’, ‘Iris-versicolor’, ‘Iris-virginica’]</p>
@@ -677,15 +717,15 @@ Name: count, dtype: int64</p>
 <p>Modus (kategori paling sering): Iris-setosa
 ‘’’</p>
 <section id="penjelasan-mengukur-jarak-dengan-tipe-data-campuran">
-<h3>penjelasan mengukur Jarak dengan tipe data campuran<a class="headerlink" href="#penjelasan-mengukur-jarak-dengan-tipe-data-campuran" title="Permalink to this heading">#</a></h3>
+<h3>penjelasan mengukur Jarak dengan tipe data campuran<a class="headerlink" href="#penjelasan-mengukur-jarak-dengan-tipe-data-campuran" title="Link to this heading">#</a></h3>
 <section id="latar-belakang">
-<h4>Latar Belakang<a class="headerlink" href="#latar-belakang" title="Permalink to this heading">#</a></h4>
+<h4>Latar Belakang<a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h4>
 <p>Dalam praktik nyata, database yang digunakan untuk analisis data sering kali tidak hanya mengandung satu jenis tipe data saja, melainkan berbagai tipe data yang tercampur menjadi satu kesatuan. Sebagai contoh, sebuah dataset dapat memuat atribut nominal seperti warna atau jenis produk, atribut binary simetris seperti jenis kelamin, atribut binary asimetris seperti hasil tes medis yang bernilai Y/N, atribut numerik berupa data interval atau rasio seperti suhu atau pendapatan, serta atribut ordinal yang memiliki tingkatan atau peringkat seperti level kepuasan atau tingkat pendidikan. Karena setiap tipe data tersebut memiliki karakteristik dan cara pengukuran yang berbeda-beda, kita tidak dapat menerapkan satu rumus jarak secara langsung untuk menghitung kemiripan atau perbedaan antar objek. Sebagai solusi, pendekatan yang dapat digunakan adalah metode pembobotan, yaitu dengan menghitung jarak untuk setiap atribut secara terpisah sesuai dengan tipe datanya, kemudian menggabungkan seluruh hasil perhitungan tersebut menggunakan rumus jarak campuran yang memperhitungkan indikator validitas setiap atribut. Dengan pendekatan ini, seluruh jenis atribut dapat berkontribusi secara proporsional dalam perhitungan jarak akhir, sehingga hasil analisis menjadi lebih akurat dan mencerminkan karakteristik data yang sebenarnya.</p>
 </section>
 </section>
 <section id="rumus-mengukur-jarak-data-campuran">
-<h3>Rumus mengukur jarak data campuran<a class="headerlink" href="#rumus-mengukur-jarak-data-campuran" title="Permalink to this heading">#</a></h3>
-<p><img alt="rumusjarak" src="_images/rumusjarakcampur.png" /></p>
+<h3>Rumus mengukur jarak data campuran<a class="headerlink" href="#rumus-mengukur-jarak-data-campuran" title="Link to this heading">#</a></h3>
+<p><img alt="rumusjarak" src="gambartugas1/rumusjarakcampur.png" /></p>
 <p>Keterangan:</p>
 <p>simbol	penjelasan
 d(i,j)	Jarak antara objek i dan j
@@ -694,60 +734,60 @@ p	umlah total atribut
 d ij (f)​	Jarak untuk atribut ke-f saja
 Cara Menghitung d(f)ij per Tipe Atribut</p>
 <section id="atribut-nominal-atau-binary">
-<h4>1. Atribut Nominal atau Binary<a class="headerlink" href="#atribut-nominal-atau-binary" title="Permalink to this heading">#</a></h4>
+<h4>1. Atribut Nominal atau Binary<a class="headerlink" href="#atribut-nominal-atau-binary" title="Link to this heading">#</a></h4>
 <p>ij(f) = 0, jika xif = xjf (nilai sama)</p>
 <p>dij(f) = 1, jika xif ≠ xjf (nilai berbeda)</p>
 <p>cara penghitungannya Menggunakan metode simple matching.</p>
 </section>
 <section id="atribut-numerik">
-<h4>2. Atribut Numerik<a class="headerlink" href="#atribut-numerik" title="Permalink to this heading">#</a></h4>
+<h4>2. Atribut Numerik<a class="headerlink" href="#atribut-numerik" title="Link to this heading">#</a></h4>
 <p>Lakukan normalisasi terlebih dahulu agar skala seragam, misalnya dengan:</p>
-<p><img alt="numerik" src="_images/atributnumerik.png" /></p>
+<p><img alt="numerik" src="gambartugas1/atributnumerik.png" /></p>
 <p>Mean Absolute Deviation: lebih robust terhadap outlier</p>
 <p>Setelah dinormalisasi, hitung jarak dengan metode numerik (Euclidean, Manhattan, dll).</p>
 </section>
 <section id="atribut-ordinal">
-<h4>Atribut Ordinal<a class="headerlink" href="#atribut-ordinal" title="Permalink to this heading">#</a></h4>
+<h4>Atribut Ordinal<a class="headerlink" href="#atribut-ordinal" title="Link to this heading">#</a></h4>
 <p>Langkah-langkah:</p>
 <p>Ganti nilai dengan ranking r i f​ (misal: rendah=1, sedang=2, tinggi=3)</p>
-<p><img alt="ordinal" src="_images/atributnominal.png" /></p>
+<p><img alt="ordinal" src="gambartugas1/atributnominal.png" /></p>
 <p>Hitung jarak menggunakan metode numerik pada nilai z i f​</p>
 </section>
 </section>
 <section id="analisis-mengunakan-orange-data-mining-untuk-data-yang-campuran">
-<h3>analisis mengunakan orange data mining untuk data yang campuran<a class="headerlink" href="#analisis-mengunakan-orange-data-mining-untuk-data-yang-campuran" title="Permalink to this heading">#</a></h3>
+<h3>analisis mengunakan orange data mining untuk data yang campuran<a class="headerlink" href="#analisis-mengunakan-orange-data-mining-untuk-data-yang-campuran" title="Link to this heading">#</a></h3>
 <p>contoh data saya untuk menganalisis penghitungan jarak di orange
-<img alt="analisis" src="_images/analisisdataorange.png" /></p>
+<img alt="analisis" src="gambartugas1/analisisdataorange.png" /></p>
 <p>Widget Distances digunakan untuk menghitung matriks dissimilarity (jarak) antar objek dalam dataset. arameter Compare diset ke Rows yang berarti perhitungan jarak dilakukan antar objek/data point (baris dalam dataset), bukan antar atribut. Hal ini sesuai dengan konsep matriks dissimilarity, dimana matriks segitiga dihasilkan dari perhitungan jarak antar n titik data. Metric jarak yang dipilih adalah Manhattan (normalized) karena data yang saya pakai memiliki data campuran</p>
-<p><img alt="gambar2" src="_images/analisisdataorange2.png" /></p>
+<p><img alt="gambar2" src="gambartugas1/analisisdataorange2.png" /></p>
 <p>Gambar tersebut menampilkan Matriks Dissimilarity (Distance Matrix) yang dihasilkan melalui widget Distance Matrix pada Orange Data Mining. matriks ini berbentuk segitiga (single mode) yang memuat data jarak antar n titik data. Struktur matriks ini bersifat simetris, dimana jarak antara objek i ke objek j sama dengan jarak objek j ke objek i atau d(i,j) = d(j,i), dan memiliki nilai diagonal nol yang menunjukkan jarak objek terhadap dirinya sendiri. nilai dissimilarity dalam matriks ini merupakan ukuran numerik dari perbedaan dua objek data. Interpretasi nilai jarak mengikuti prinsip dimana nilai yang sangat rendah menunjukkan benda yang lebih mirip, sedangkan nilai yang tinggi menunjukkan perbedaan yang besar. Hal ini terlihat jelas pada data pelanggan dalam matriks. Sebagai contoh, jarak antara customer 7590-VHVEG dan 5575-GNVDE adalah 2,074, yang menunjukkan tingkat perbedaan sedang. Namun, customer 7590-VHVEG memiliki nilai jarak yang lebih kecil yaitu 0,554 terhadap customer 3668-QPYBK, yang mengindikasikan bahwa kedua customer tersebut memiliki karakteristik yang sangat mirip. Sebaliknya, perbedaan yang signifikan terlihat pada pasangan customer 8091-TTVAX dan 3668-QPYBK yang memiliki nilai jarak sebesar 4,519. Nilai yang besar ini menandakan bahwa kedua objek tersebut sangat berbeda secara karakteristik. Secara keseluruhan, matriks ini memenuhi sifat-sifat jarak yaitu positive definiteness (nilai &gt; 0 untuk objek berbeda), symmetry, dan triangle inequality. Hasil matriks dissimilarity ini menjadi dasar utama untuk tahapan selanjutnya yaitu Hierarchical Clustering dalam mengelompokkan pelanggan berdasarkan kemiripan karakteristiknya.</p>
-<p><img alt="gambar3" src="_images/analisisdataorange3.png" /></p>
-<p><img alt="gambar4" src="_images/analisisdataorange4.png" /></p>
+<p><img alt="gambar3" src="gambartugas1/analisisdataorange3.png" /></p>
+<p><img alt="gambar4" src="gambartugas1/analisisdataorange4.png" /></p>
 <p>Berdasarkan dendrogram, hierarchical clustering dilakukan dengan metode linkage Ward dan menghasilkan 4 cluster optimal. Pemotongan dendrogram dilakukan pada ketinggian tertentu sehingga diperoleh:</p>
 <p>Cluster 1: sejumlah X customer, Cluster 2: sejumlah X customer, Cluster 3: sejumlah X customer, Cluster 4: sejumlah X customer,</p>
 <p>Metode Ward linkage dipilih karena mampu menghasilkan cluster yang lebih kompak dengan meminimalkan varians dalam setiap cluster.</p>
 </section>
 <section id="implementasikan-data-iris-untuk-mengukur-jara-di-orange">
-<h3>implementasikan data iris untuk mengukur jara di orange<a class="headerlink" href="#implementasikan-data-iris-untuk-mengukur-jara-di-orange" title="Permalink to this heading">#</a></h3>
+<h3>implementasikan data iris untuk mengukur jara di orange<a class="headerlink" href="#implementasikan-data-iris-untuk-mengukur-jara-di-orange" title="Link to this heading">#</a></h3>
 <p><img alt="implementasi1" src="gaambartugas1/implementasidataorange.png" /></p>
 <p>gambar diatas merupakan sebagian data mentah dari iris untuk diimplementasikan dalam menghitung jarak</p>
-<p><img alt="implementasi2" src="_images/implementasidataorange2.png" /></p>
+<p><img alt="implementasi2" src="gambartugas1/implementasidataorange2.png" /></p>
 <p>gambar di atas merupakan hasil dari menghitung jarak pada data iris dimana prosesnya sama dengan yang tadi
-<img alt="implementasi3" src="_images/implementasidataorange3.png" /></p>
+<img alt="implementasi3" src="gambartugas1/implementasidataorange3.png" /></p>
 <p>gambar di atas merupakan visualiasi pengukuran jarak pada orange, tetapi sementara saya menggunakan widget csv file impor untuk mengimpor data iris bukan menggunakan sql table karena widget tersebut masih ada erornya atau tidak bisa di pakai dan belum menemukan solusinya</p>
 </section>
 </section>
 <section id="mengukur-jarak-similaritas-data">
-<h2>Mengukur Jarak/Similaritas Data<a class="headerlink" href="#mengukur-jarak-similaritas-data" title="Permalink to this heading">#</a></h2>
+<h2>Mengukur Jarak/Similaritas Data<a class="headerlink" href="#mengukur-jarak-similaritas-data" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="normalisasi-data">
-<h3>Normalisasi data<a class="headerlink" href="#normalisasi-data" title="Permalink to this heading">#</a></h3>
+<h3>Normalisasi data<a class="headerlink" href="#normalisasi-data" title="Link to this heading">#</a></h3>
 <p>Normalisasi data adalah teknik pra-pemrosesan yang sangat penting dalam <em>data mining</em> dan <em>machine learning</em>. Tujuannya adalah menyamakan skala seluruh variabel/fitur agar tidak ada satu atribut pun yang mendominasi atribut lain hanya karena memiliki rentang angka yang lebih besar (misalnya, membandingkan atribut <strong>Penghasilan Orang Tua</strong> dalam ribuan dengan <strong>IPK</strong> dalam satuan kecil 2–4).</p>
 <p><strong>Misal kita punya data mahasiswa: X = [IPK, Penghasilan_OT, Nilai_UAS, Jarak_Kampus]</strong></p>
 <p>Berikut adalah tiga teknik normalisasi data yang paling sering digunakan:</p>
 <hr class="docutils" />
 <section id="dataset-sebelum-normalisasi">
-<h4>Dataset Sebelum Normalisasi<a class="headerlink" href="#dataset-sebelum-normalisasi" title="Permalink to this heading">#</a></h4>
+<h4>Dataset Sebelum Normalisasi<a class="headerlink" href="#dataset-sebelum-normalisasi" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>No</p></th>
@@ -835,7 +875,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="min-max-normalization">
-<h4>1. Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Permalink to this heading">#</a></h4>
+<h4>1. Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Link to this heading">#</a></h4>
 <p>Metode ini digunakan untuk menyesuaikan nilai data agar berada dalam rentang tertentu, biasanya <strong>0 sampai 1</strong>. Teknik ini sering dipakai pada algoritma yang menghitung jarak antar data, misalnya pada <em>K-Means Clustering</em> dan <em>K-Nearest Neighbor</em>.</p>
 <ul class="simple">
 <li><p><strong>Kelebihan:</strong> Hubungan antar nilai data tetap terjaga. Output selalu dalam rentang [0, 1].</p></li>
@@ -845,7 +885,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 <div class="math notranslate nohighlight">
 \[x' = \frac{x - x_{min}}{x_{max} - x_{min}}\]</div>
 <section id="contoh">
-<h5>Contoh<a class="headerlink" href="#contoh" title="Permalink to this heading">#</a></h5>
+<h5>Contoh<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h5>
 <p>Mengubah nilai data agar berada pada rentang <strong>0 sampai 1</strong>. Kolom <strong>IPK</strong>, mahasiswa <strong>Andi (IPK = 3.50)</strong>:</p>
 <ul class="simple">
 <li><p>Nilai minimum IPK: <span class="math notranslate nohighlight">\(x_{min}\)</span> = <strong>2.40</strong> (Deni)</p></li>
@@ -989,7 +1029,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </div></blockquote>
 </section>
 <section id="min-max-new-custom-range">
-<h5>Min-Max New (Custom Range)<a class="headerlink" href="#min-max-new-custom-range" title="Permalink to this heading">#</a></h5>
+<h5>Min-Max New (Custom Range)<a class="headerlink" href="#min-max-new-custom-range" title="Link to this heading">#</a></h5>
 <p>Min-Max juga bisa digunakan untuk mengubah data ke <strong>rentang baru yang kita tentukan sendiri</strong>, misalnya 0–10, −1 sampai 1, atau rentang lainnya.</p>
 <ul class="simple">
 <li><p><strong>Rumus:</strong></p></li>
@@ -997,7 +1037,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 <div class="math notranslate nohighlight">
 \[x' = \frac{x - x_{min}}{x_{max} - x_{min}} \times (New_{max} - New_{min}) + New_{min}\]</div>
 <section id="id2">
-<h6>Contoh<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h6>
+<h6>Contoh<a class="headerlink" href="#id2" title="Link to this heading">#</a></h6>
 <p>Misalnya IPK Andi ingin diubah ke rentang <strong>0 sampai 10</strong>:</p>
 <div class="math notranslate nohighlight">
 \[IPK'_{Andi} = \frac{3.50 - 2.40}{3.85 - 2.40} \times (10 - 0) + 0 = \frac{1.10}{1.45} \times 10 \approx \mathbf{7.586}\]</div>
@@ -1006,7 +1046,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="z-score-normalization">
-<h4>2. Z-Score Normalization<a class="headerlink" href="#z-score-normalization" title="Permalink to this heading">#</a></h4>
+<h4>2. Z-Score Normalization<a class="headerlink" href="#z-score-normalization" title="Link to this heading">#</a></h4>
 <p>Teknik ini mengubah data sehingga nilai rata-rata (<em>mean</em>) menjadi <strong>0</strong> dan standar deviasi menjadi <strong>1</strong>. Metode ini sering digunakan ketika data memiliki skala yang berbeda atau terdapat <em>outlier</em>.</p>
 <ul class="simple">
 <li><p><strong>Kelebihan:</strong> Lebih tahan terhadap <em>outlier</em> dibanding Min-Max karena mempertimbangkan penyebaran data.</p></li>
@@ -1017,7 +1057,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 \[x' = \frac{x - \mu}{\sigma}\]</div>
 <p><em>(Keterangan: <span class="math notranslate nohighlight">\(\mu\)</span> adalah rata-rata dan <span class="math notranslate nohighlight">\(\sigma\)</span> adalah standar deviasi)</em></p>
 <section id="id3">
-<h5>Contoh<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h5>
+<h5>Contoh<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p>Tujuan: mengubah data sehingga <strong>mean = 0</strong> dan <strong>standar deviasi = 1</strong>. Kolom <strong>IPK</strong>, mahasiswa <strong>Andi (IPK = 3.50)</strong>:</p>
 <p><strong>Langkah 1 — Hitung rata-rata (μ):</strong></p>
 <div class="math notranslate nohighlight">
@@ -1165,7 +1205,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="decimal-scaling">
-<h4>3. Decimal Scaling<a class="headerlink" href="#decimal-scaling" title="Permalink to this heading">#</a></h4>
+<h4>3. Decimal Scaling<a class="headerlink" href="#decimal-scaling" title="Link to this heading">#</a></h4>
 <p>Teknik ini bekerja dengan menggeser titik desimal dari nilai data. Jumlah pergeseran desimal bergantung pada nilai absolut maksimum di dalam atribut tersebut. Ini adalah metode normalisasi yang <strong>paling mudah dihitung secara manual</strong>.</p>
 <ul class="simple">
 <li><p><strong>Kelebihan:</strong> Sederhana dan mudah dihitung, tidak perlu menghitung mean atau std.</p></li>
@@ -1176,7 +1216,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 \[x' = \frac{x}{10^j}\]</div>
 <p><em>(Keterangan: <span class="math notranslate nohighlight">\(j\)</span> adalah bilangan bulat terkecil sehingga nilai mutlak maksimum dari <span class="math notranslate nohighlight">\(x'\)</span> kurang dari 1)</em></p>
 <section id="id4">
-<h5>Contoh<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h5>
+<h5>Contoh<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>Menggeser koma desimal. Pembaginya ditentukan oleh jumlah digit nilai terbesar di setiap kolom supaya nilai akhirnya kurang dari 1:</p>
 <p><strong>Kolom IPK</strong> — nilai terbesar = 3.85, bagian bulat = 3 → <strong>1 digit</strong> → <span class="math notranslate nohighlight">\(j = 1\)</span> → dibagi <span class="math notranslate nohighlight">\(10^1 = 10\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -1327,7 +1367,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="implementasi-dengan-sklearn-dan-fungsi-kustom">
-<h4>Implementasi dengan Sklearn dan Fungsi Kustom<a class="headerlink" href="#implementasi-dengan-sklearn-dan-fungsi-kustom" title="Permalink to this heading">#</a></h4>
+<h4>Implementasi dengan Sklearn dan Fungsi Kustom<a class="headerlink" href="#implementasi-dengan-sklearn-dan-fungsi-kustom" title="Link to this heading">#</a></h4>
 <p>Berikut adalah script Python menggunakan <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> untuk Min-Max dan Z-Score, serta fungsi manual untuk Decimal Scaling.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1383,9 +1423,9 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="tugas-missing-values">
-<h3>Tugas - Missing Values<a class="headerlink" href="#tugas-missing-values" title="Permalink to this heading">#</a></h3>
+<h3>Tugas - Missing Values<a class="headerlink" href="#tugas-missing-values" title="Link to this heading">#</a></h3>
 <section id="transkripsi-data">
-<h4>1. Transkripsi Data<a class="headerlink" href="#transkripsi-data" title="Permalink to this heading">#</a></h4>
+<h4>1. Transkripsi Data<a class="headerlink" href="#transkripsi-data" title="Link to this heading">#</a></h4>
 <p>Dataset mahasiswa ditambah kolom <strong>Nilai_Tugas</strong>. Baris ke-7 (<strong>Gina</strong>) memiliki nilai <strong>?</strong> yang akan dicari menggunakan WKNN. Fitur yang digunakan untuk menghitung jarak adalah <strong>IPK</strong> dan <strong>Penghasilan_OT</strong> yang sudah dinormalisasi Min-Max.</p>
 <p><strong>Tabel Data Asli (Kiri) &amp; Data Normalisasi (Kanan)</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1530,7 +1570,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="mencari-nilai-tanda-tanya-dengan-wknn">
-<h4>2. Mencari Nilai Tanda Tanya (?) dengan WKNN<a class="headerlink" href="#mencari-nilai-tanda-tanya-dengan-wknn" title="Permalink to this heading">#</a></h4>
+<h4>2. Mencari Nilai Tanda Tanya (?) dengan WKNN<a class="headerlink" href="#mencari-nilai-tanda-tanya-dengan-wknn" title="Link to this heading">#</a></h4>
 <p>Untuk memprediksi <strong>Nilai_Tugas Gina (?)</strong> dengan data ternormalisasi <code class="docutils literal notranslate"><span class="pre">(IPK'</span> <span class="pre">=</span> <span class="pre">0.3448,</span> <span class="pre">Penghasilan'</span> <span class="pre">=</span> <span class="pre">0.1538)</span></code>, kita hitung jarak <strong>Euclidean</strong> dari Gina ke semua baris lain yang nilainya sudah diketahui (baris 1–6 dan 8–10). Algoritma WKNN memberikan bobot (<em>weight</em>) berdasarkan kebalikan dari jarak (<span class="math notranslate nohighlight">\(w = 1/d\)</span>) — semakin dekat jaraknya, semakin besar bobotnya.</p>
 <p><strong>Rumus jarak Euclidean:</strong></p>
 <div class="math notranslate nohighlight">
@@ -1617,7 +1657,7 @@ Cara Menghitung d(f)ij per Tipe Atribut</p>
 </section>
 <hr class="docutils" />
 <section id="kode-untuk-menghitung-missing-values">
-<h4>Kode untuk Menghitung Missing Values<a class="headerlink" href="#kode-untuk-menghitung-missing-values" title="Permalink to this heading">#</a></h4>
+<h4>Kode untuk Menghitung Missing Values<a class="headerlink" href="#kode-untuk-menghitung-missing-values" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="c1"># 1. Data latih (ternormalisasi Min-Max) — Baris 1-6 dan 8-10</span>
@@ -1689,6 +1729,506 @@ Nilai_Tugas Gina = 1522.17 / 22.6630 = 67.16
 </section>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="uts">
+<h1>UTS<a class="headerlink" href="#uts" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="analisis-data-kesuburan-tanah">
+<h1>Analisis Data Kesuburan Tanah<a class="headerlink" href="#analisis-data-kesuburan-tanah" title="Link to this heading">#</a></h1>
+<section id="dataset-klasifikasi-kesuburan-tanah">
+<h2>Dataset Klasifikasi Kesuburan Tanah<a class="headerlink" href="#dataset-klasifikasi-kesuburan-tanah" title="Link to this heading">#</a></h2>
+<section id="deskripsi-umum">
+<h3>Deskripsi Umum<a class="headerlink" href="#deskripsi-umum" title="Link to this heading">#</a></h3>
+<p>Dataset berisi <strong>2.000 sampel</strong> data tanah dengan <strong>10 fitur agronomis</strong> dan 1 kolom label yang membagi kondisi tanah menjadi dua kelas: <strong>Subur</strong> dan <strong>Tidak Subur</strong>. Data mengandung <em>missing values</em> (data hilang).</p>
+</section>
+<section id="informasi-dataset">
+<h3>Informasi Dataset<a class="headerlink" href="#informasi-dataset" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Atribut</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jumlah Sampel</p></td>
+<td><p>2.000 baris</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jumlah Fitur</p></td>
+<td><p>10 fitur (9 numerik, 1 kategorikal)</p></td>
+</tr>
+<tr class="row-even"><td><p>Jumlah Kelas</p></td>
+<td><p>2 kelas</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target / Label</p></td>
+<td><p>Subur / Tidak Subur</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="penjelasan-fitur">
+<h2>Penjelasan Fitur<a class="headerlink" href="#penjelasan-fitur" title="Link to this heading">#</a></h2>
+<section id="ph-tanah">
+<h3>1. pH Tanah<a class="headerlink" href="#ph-tanah" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Skala pH (0–14)</p></li>
+<li><p><strong>Deskripsi:</strong> Tingkat keasaman atau kebasaan tanah. pH optimal untuk pertanian berkisar 6,0–7,5.</p></li>
+<li><p><strong>Nilai Subur:</strong> 6,0 – 7,5</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 3,5 – 5,4 (asam kuat) atau 7,6 – 9,0 (basa kuat)</p></li>
+</ul>
+</section>
+<section id="n-total">
+<h3>2. N Total (%)<a class="headerlink" href="#n-total" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Persen (%)</p></li>
+<li><p><strong>Deskripsi:</strong> Kandungan nitrogen total dalam tanah. Nitrogen sangat penting untuk pertumbuhan vegetatif tanaman.</p></li>
+<li><p><strong>Nilai Subur:</strong> 0,21 – 0,50%</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 0,01 – 0,20%</p></li>
+</ul>
+</section>
+<section id="p-tersedia-ppm">
+<h3>3. P Tersedia (ppm)<a class="headerlink" href="#p-tersedia-ppm" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Parts per million (ppm)</p></li>
+<li><p><strong>Deskripsi:</strong> Fosfor tersedia yang dapat diserap tanaman. Fosfor berperan dalam pembentukan akar dan buah.</p></li>
+<li><p><strong>Nilai Subur:</strong> 15 – 60 ppm</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 1 – 14 ppm</p></li>
+</ul>
+</section>
+<section id="k-tersedia-meq-100g">
+<h3>4. K Tersedia (meq/100g)<a class="headerlink" href="#k-tersedia-meq-100g" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Milliequivalent per 100 gram tanah</p></li>
+<li><p><strong>Deskripsi:</strong> Kalium tersedia dalam tanah. Penting untuk ketahanan tanaman dan proses fotosintesis.</p></li>
+<li><p><strong>Nilai Subur:</strong> 0,30 – 0,80 meq/100g</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 0,05 – 0,29 meq/100g</p></li>
+</ul>
+</section>
+<section id="c-organik">
+<h3>5. C Organik (%)<a class="headerlink" href="#c-organik" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Persen (%)</p></li>
+<li><p><strong>Deskripsi:</strong> Kandungan karbon organik tanah, indikator utama kesuburan dan kesehatan biologi tanah.</p></li>
+<li><p><strong>Nilai Subur:</strong> 2,0 – 5,0%</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 0,2 – 1,9%</p></li>
+</ul>
+</section>
+<section id="ktk-meq-100g">
+<h3>6. KTK (meq/100g)<a class="headerlink" href="#ktk-meq-100g" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Milliequivalent per 100 gram tanah</p></li>
+<li><p><strong>Deskripsi:</strong> Kapasitas Tukar Kation — kemampuan tanah mengikat dan menyediakan unsur hara bagi tanaman. Semakin tinggi semakin subur.</p></li>
+<li><p><strong>Nilai Subur:</strong> 20 – 45 meq/100g</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 5 – 19 meq/100g</p></li>
+</ul>
+</section>
+<section id="kejenuhan-basa">
+<h3>7. Kejenuhan Basa (%)<a class="headerlink" href="#kejenuhan-basa" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Persen (%)</p></li>
+<li><p><strong>Deskripsi:</strong> Persentase kation basa (Ca, Mg, K, Na) dari total KTK. Menggambarkan kualitas kesuburan kimia tanah.</p></li>
+<li><p><strong>Nilai Subur:</strong> 60 – 100%</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 10 – 59%</p></li>
+</ul>
+</section>
+<section id="tekstur-tanah">
+<h3>8. Tekstur Tanah<a class="headerlink" href="#tekstur-tanah" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Tipe:</strong> Kategorikal</p></li>
+<li><p><strong>Deskripsi:</strong> Komposisi partikel tanah yang memengaruhi drainase, aerasi, dan kemampuan menahan air.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kelas</p></th>
+<th class="head"><p>Tekstur yang Umum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Subur</p></td>
+<td><p>Lempung, Lempung Berpasir, Lempung Berliat</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidak Subur</p></td>
+<td><p>Pasir, Liat, Debu</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="kadar-air">
+<h3>9. Kadar Air (%)<a class="headerlink" href="#kadar-air" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Persen (%)</p></li>
+<li><p><strong>Deskripsi:</strong> Persentase kadar air dalam tanah. Terlalu kering atau terlalu basah sama-sama merugikan pertumbuhan tanaman.</p></li>
+<li><p><strong>Nilai Subur:</strong> 25 – 45%</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 5 – 20% (terlalu kering) atau 55 – 75% (terlalu basah)</p></li>
+</ul>
+</section>
+<section id="bulk-density-g-cm3">
+<h3>10. Bulk Density (g/cm³)<a class="headerlink" href="#bulk-density-g-cm3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Satuan:</strong> Gram per sentimeter kubik</p></li>
+<li><p><strong>Deskripsi:</strong> Kerapatan tanah. Nilai tinggi menandakan tanah padat, aerasi buruk, dan sulit ditembus akar.</p></li>
+<li><p><strong>Nilai Subur:</strong> 0,9 – 1,2 g/cm³</p></li>
+<li><p><strong>Nilai Tidak Subur:</strong> 1,4 – 1,9 g/cm³</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="definisi-kelas">
+<h2>Definisi Kelas<a class="headerlink" href="#definisi-kelas" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Subur</strong></p></td>
+<td><p>Tanah dengan kondisi fisik, kimia, dan biologi yang optimal untuk pertumbuhan tanaman. Ditandai dengan pH seimbang, unsur hara cukup, tekstur ideal, dan struktur tanah yang baik.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Tidak Subur</strong></p></td>
+<td><p>Tanah yang memiliki satu atau lebih kondisi pembatas seperti pH ekstrem, kekurangan unsur hara, tekstur buruk, kadar air tidak ideal, atau kerapatan tanah tinggi.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="distribusi-kelas">
+<h3>Distribusi Kelas<a class="headerlink" href="#distribusi-kelas" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kelas</p></th>
+<th class="head"><p>Jumlah</p></th>
+<th class="head"><p>Persentase</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Subur</p></td>
+<td><p>1.000 sampel</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidak Subur</p></td>
+<td><p>1.000 sampel</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total</strong></p></td>
+<td><p><strong>2.000 sampel</strong></p></td>
+<td><p><strong>100%</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pemrosesan-data">
+<h2>Pemrosesan Data<a class="headerlink" href="#pemrosesan-data" title="Link to this heading">#</a></h2>
+<section id="missing-values">
+<h3>Missing Values<a class="headerlink" href="#missing-values" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolom</p></th>
+<th class="head"><p>Jumlah Missing</p></th>
+<th class="head"><p>Metode Imputasi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>N Total (%)</p></td>
+<td><p>160</p></td>
+<td><p>Median = 0,1995</p></td>
+</tr>
+<tr class="row-odd"><td><p>P Tersedia (ppm)</p></td>
+<td><p>240</p></td>
+<td><p>Median = 15,065</p></td>
+</tr>
+<tr class="row-even"><td><p>K Tersedia (meq/100g)</p></td>
+<td><p>140</p></td>
+<td><p>Median = 0,3005</p></td>
+</tr>
+<tr class="row-odd"><td><p>C Organik (%)</p></td>
+<td><p>200</p></td>
+<td><p>Median = 2,000</p></td>
+</tr>
+<tr class="row-even"><td><p>Kadar Air (%)</p></td>
+<td><p>180</p></td>
+<td><p>Median = 34,365</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bulk Density (g/cm³)</p></td>
+<td><p>120</p></td>
+<td><p>Median = 1,405</p></td>
+</tr>
+<tr class="row-even"><td><p>Tekstur Tanah</p></td>
+<td><p>100</p></td>
+<td><p>Modus = “Lempung”</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td><p><strong>1.140</strong></p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="encoding-fitur-kategorikal">
+<h3>Encoding Fitur Kategorikal<a class="headerlink" href="#encoding-fitur-kategorikal" title="Link to this heading">#</a></h3>
+<p>Kolom <strong>Tekstur Tanah</strong> diubah menjadi angka menggunakan <em>Label Encoding</em>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tekstur</p></th>
+<th class="head"><p>Nilai Numerik</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Debu</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lempung</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Lempung Berliat</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lempung Berpasir</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>Liat</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pasir</p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="encoding-label">
+<h3>Encoding Label<a class="headerlink" href="#encoding-label" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Nilai Numerik</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Subur</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidak Subur</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="normalisasi">
+<h3>Normalisasi<a class="headerlink" href="#normalisasi" title="Link to this heading">#</a></h3>
+<p>Seluruh fitur numerik dinormalisasi menggunakan <strong>Z-Score (StandardScaler)</strong> agar KNN tidak bias terhadap perbedaan skala antar fitur.</p>
+<div class="math notranslate nohighlight">
+\[z = \frac{x - \mu}{\sigma}\]</div>
+</section>
+<section id="pembagian-data-train-test-split">
+<h3>Pembagian Data (Train/Test Split)<a class="headerlink" href="#pembagian-data-train-test-split" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Set</p></th>
+<th class="head"><p>Jumlah</p></th>
+<th class="head"><p>Persentase</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Training</p></td>
+<td><p>1.600 data</p></td>
+<td><p>80%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Testing</p></td>
+<td><p>400 data</p></td>
+<td><p>20%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Metode:</strong> Stratified Sampling</p></li>
+<li><p><strong>Random Seed:</strong> 42</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="analisis-k-nearest-neighbors-knn">
+<h2>Analisis K-Nearest Neighbors (KNN)<a class="headerlink" href="#analisis-k-nearest-neighbors-knn" title="Link to this heading">#</a></h2>
+<section id="konfigurasi-model">
+<h3>Konfigurasi Model<a class="headerlink" href="#konfigurasi-model" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Algoritma</p></td>
+<td><p>K-Nearest Neighbors (KNN)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nilai k</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Metrik Jarak</p></td>
+<td><p>Euclidean Distance</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kolom Target</p></td>
+<td><p>Label</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="rumus-euclidean-distance">
+<h3>Rumus Euclidean Distance<a class="headerlink" href="#rumus-euclidean-distance" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="metrik-evaluasi">
+<h2>Metrik Evaluasi<a class="headerlink" href="#metrik-evaluasi" title="Link to this heading">#</a></h2>
+<section id="hasil">
+<h3>Hasil<a class="headerlink" href="#hasil" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metrik</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p><strong>100,00%</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Precision</strong></p></td>
+<td><p><strong>1,0000</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recall</strong></p></td>
+<td><p><strong>1,0000</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>F1-Score</strong></p></td>
+<td><p><strong>1,0000</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="penjelasan-metrik">
+<h3>Penjelasan Metrik<a class="headerlink" href="#penjelasan-metrik" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metrik</p></th>
+<th class="head"><p>Keterangan</p></th>
+<th class="head"><p>Rumus</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p>Persentase prediksi benar dari total data</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{TP + TN}{TP + TN + FP + FN}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Precision</strong></p></td>
+<td><p>Ketepatan prediksi kelas positif</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{TP}{TP + FP}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recall</strong></p></td>
+<td><p>Kemampuan mendeteksi seluruh kelas positif</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{TP}{TP + FN}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>F1-Score</strong></p></td>
+<td><p>Harmonic mean antara Precision dan Recall</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{2 \times Precision \times Recall}{Precision + Recall}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classification-report">
+<h3>Classification Report<a class="headerlink" href="#classification-report" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kelas</p></th>
+<th class="head"><p>Precision</p></th>
+<th class="head"><p>Recall</p></th>
+<th class="head"><p>F1-Score</p></th>
+<th class="head"><p>Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Subur</p></td>
+<td><p>1,00</p></td>
+<td><p>1,00</p></td>
+<td><p>1,00</p></td>
+<td><p>200</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidak Subur</p></td>
+<td><p>1,00</p></td>
+<td><p>1,00</p></td>
+<td><p>1,00</p></td>
+<td><p>200</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Rata-rata</strong></p></td>
+<td><p><strong>1,00</strong></p></td>
+<td><p><strong>1,00</strong></p></td>
+<td><p><strong>1,00</strong></p></td>
+<td><p><strong>400</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="confusion-matrix">
+<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Prediksi: Subur</p></th>
+<th class="head"><p>Prediksi: Tidak Subur</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Aktual: Subur</strong></p></td>
+<td><p>200 (TP)</p></td>
+<td><p>0 (FP)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Aktual: Tidak Subur</strong></p></td>
+<td><p>0 (FN)</p></td>
+<td><p>200 (TN)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Model <strong>K-Nearest Neighbors (KNN)</strong> dengan nilai <code class="docutils literal notranslate"><span class="pre">k=5</span></code> dan metrik jarak Euclidean berhasil mengklasifikasikan kesuburan tanah dengan hasil <strong>sempurna (100%)</strong> pada seluruh metrik evaluasi.</p>
+<p>Hal ini terjadi karena dataset bersifat <strong>sintetis</strong> dengan aturan pembagian kelas yang sangat deterministik — setiap fitur memiliki rentang nilai yang benar-benar terpisah antara kelas Subur dan Tidak Subur, sehingga model KNN mampu memisahkan kedua kelas tanpa kesalahan sama sekali.</p>
+<section id="urutan-langkah-analisis-pipeline">
+<h3>Urutan Langkah Analisis (Pipeline)<a class="headerlink" href="#urutan-langkah-analisis-pipeline" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CSV Reader
+    ↓
+Column Filter  (hapus kolom ID)
+    ↓
+Missing Value  (imputasi: Median &amp; Most Frequent)
+    ↓
+Category To Number  (encoding Tekstur Tanah)
+    ↓
+Normalizer  (Z-Score)
+    ↓
+Partitioning  (80% train / 20% test, stratified)
+    ↓
+K Nearest Neighbor  (k=5, Euclidean)
+    ↓
+Scorer  (Accuracy, Precision, Recall, F1-Score)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1721,7 +2261,7 @@ Nilai_Tugas Gina = 1522.17 / 22.6630 = 67.16
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Business%20Understanding.html"
+       href="Business_Understanding.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1730,11 +2270,11 @@ Nilai_Tugas Gina = 1522.17 / 22.6630 = 67.16
       </div>
     </a>
     <a class="right-next"
-       href="Data%20Preparation.html"
+       href="Modelling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Preparation</p>
+        <p class="prev-next-title">Modeling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1745,15 +2285,18 @@ Nilai_Tugas Gina = 1522.17 / 22.6630 = 67.16
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-dan-integrasi-sumber-data">2.1 Identifikasi dan Integrasi Sumber Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-statistik-dan-visualisasi">2.2 Eksplorasi Statistik dan Visualisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kualitas-data">2.3 Analisis Kualitas Data</a></li>
@@ -1824,6 +2367,59 @@ Daftar Kolom: [‘sepal_length’, ‘sepal_width’, ‘petal_length’, ‘pet
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uts">UTS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-kesuburan-tanah">Analisis Data Kesuburan Tanah</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-klasifikasi-kesuburan-tanah">Dataset Klasifikasi Kesuburan Tanah</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-umum">Deskripsi Umum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset">Informasi Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur">Penjelasan Fitur</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ph-tanah">1. pH Tanah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-total">2. N Total (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-tersedia-ppm">3. P Tersedia (ppm)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-tersedia-meq-100g">4. K Tersedia (meq/100g)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-organik">5. C Organik (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ktk-meq-100g">6. KTK (meq/100g)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kejenuhan-basa">7. Kejenuhan Basa (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tekstur-tanah">8. Tekstur Tanah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kadar-air">9. Kadar Air (%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-density-g-cm3">10. Bulk Density (g/cm³)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-kelas">Definisi Kelas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas">Distribusi Kelas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemrosesan-data">Pemrosesan Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-fitur-kategorikal">Encoding Fitur Kategorikal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label">Encoding Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi">Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-data-train-test-split">Pembagian Data (Train/Test Split)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-k-nearest-neighbors-knn">Analisis K-Nearest Neighbors (KNN)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-model">Konfigurasi Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-euclidean-distance">Rumus Euclidean Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">Metrik Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil">Hasil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metrik">Penjelasan Metrik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">Classification Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#urutan-langkah-analisis-pipeline">Urutan Langkah Analisis (Pipeline)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -1847,7 +2443,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1871,8 +2467,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
