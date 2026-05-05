@@ -13,7 +13,6 @@
 7. [Hasil & Evaluasi Model](#7-hasil--evaluasi-model)
 8. [Visualisasi](#8-visualisasi)
 9. [Kesimpulan](#9-kesimpulan)
-10. [Referensi](#10-referensi)
 
 ---
 
@@ -683,3 +682,5 @@ Model **Gaussian Naive Bayes** berhasil mengklasifikasikan penyakit diabetes den
 - Asumsi independensi antar fitur jarang terpenuhi di data nyata
 - Kurang akurat dibanding model kompleks (Random Forest, XGBoost) pada data besar
 - Sensitif terhadap fitur yang sangat berkorelasi
+
+Download dataset: [diabetes_dataset.csv](diabetes_dataset.csv)
