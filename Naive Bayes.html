@@ -1,0 +1,1561 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analisis Data Menggunakan Naive Bayes &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Naive Bayes';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modeling" href="Modelling.html" />
+    <link rel="prev" title="Data Understanding" href="Data_Understanding.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logobayu.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logobayu.jpeg" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Perkenalan
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis Data Menggunakan Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modelling.html">Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Deployment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNaive Bayes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Naive Bayes.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analisis Data Menggunakan Naive Bayes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-isi">Daftar Isi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">1. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teori-naive-bayes">2. Teori Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-naive-bayes">2.1 Apa itu Naive Bayes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-bayes">2.2 Formula Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-naive-bayes-di-scikit-learn">2.3 Jenis-jenis Naive Bayes di Scikit-Learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-gaussiannb">2.4 Cara Kerja GaussianNB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">3. Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset">3.1 Informasi Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-fitur">3.2 Deskripsi Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-5-baris-pertama-dataset">3.3 Contoh 5 Baris Pertama Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-target">3.4 Distribusi Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-dataset-csv-python">3.5 Generate Dataset CSV (Python)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-persiapan">4. Instalasi &amp; Persiapan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library">4.1 Instalasi Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-file-proyek">4.2 Struktur File Proyek</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versi-library-yang-direkomendasikan">4.3 Versi Library yang Direkomendasikan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-python-lengkap">5. Script Python Lengkap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-tiap-tahap">6. Penjelasan Tiap Tahap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-load-data">Tahap 1 — Load Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-eksplorasi-data-eda">Tahap 2 — Eksplorasi Data (EDA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-persiapan-data">Tahap 3 — Persiapan Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-training-model">Tahap 4 — Training Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-prediksi-evaluasi">Tahap 5 — Prediksi &amp; Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi-yang-digunakan">Metrik Evaluasi yang Digunakan:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-cross-validation">Tahap 6 — Cross-Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-7-prediksi-data-baru">Tahap 7 — Prediksi Data Baru</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-evaluasi-model">7. Hasil &amp; Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-performa">7.1 Ringkasan Performa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">7.2 Classification Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3 Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-output-prediksi-data-baru">7.4 Contoh Output Prediksi Data Baru</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-prior-probability">7.5 Class Prior Probability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">8. Visualisasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">9. Kesimpulan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-utama">9.1 Hasil Utama</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-naive-bayes">9.2 Kelebihan Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-naive-bayes">9.3 Kekurangan Naive Bayes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-data-menggunakan-naive-bayes">
+<h1>Analisis Data Menggunakan Naive Bayes<a class="headerlink" href="#analisis-data-menggunakan-naive-bayes" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Model:</strong> Gaussian Naive Bayes | <strong>Library:</strong> scikit-learn | <strong>Dataset:</strong> Prediksi Penyakit Diabetes</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="daftar-isi">
+<h2>Daftar Isi<a class="headerlink" href="#daftar-isi" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1-deskripsi-proyek"><span class="xref myst">Deskripsi Proyek</span></a></p></li>
+<li><p><a class="reference internal" href="#2-teori-naive-bayes"><span class="xref myst">Teori Naive Bayes</span></a></p></li>
+<li><p><a class="reference internal" href="#3-dataset"><span class="xref myst">Dataset</span></a></p></li>
+<li><p><a class="reference internal" href="#4-instalasi--persiapan"><span class="xref myst">Instalasi &amp; Persiapan</span></a></p></li>
+<li><p><a class="reference internal" href="#5-script-python-lengkap"><span class="xref myst">Script Python Lengkap</span></a></p></li>
+<li><p><a class="reference internal" href="#6-penjelasan-tiap-tahap"><span class="xref myst">Penjelasan Tiap Tahap</span></a></p></li>
+<li><p><a class="reference internal" href="#7-hasil--evaluasi-model"><span class="xref myst">Hasil &amp; Evaluasi Model</span></a></p></li>
+<li><p><a class="reference internal" href="#8-visualisasi"><span class="xref myst">Visualisasi</span></a></p></li>
+<li><p><a class="reference internal" href="#9-kesimpulan"><span class="xref myst">Kesimpulan</span></a></p></li>
+<li><p><a class="reference internal" href="#10-referensi"><span class="xref myst">Referensi</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="deskripsi-proyek">
+<h2>1. Deskripsi Proyek<a class="headerlink" href="#deskripsi-proyek" title="Link to this heading">#</a></h2>
+<p>Proyek ini membangun sistem klasifikasi untuk <strong>memprediksi apakah seseorang menderita diabetes atau tidak</strong> berdasarkan data medis. Model yang digunakan adalah <strong>Gaussian Naive Bayes</strong> dari library <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Algoritma</strong></p></td>
+<td><p>Gaussian Naive Bayes (<code class="docutils literal notranslate"><span class="pre">GaussianNB</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Library</strong></p></td>
+<td><p>scikit-learn, pandas, numpy, matplotlib, seaborn</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Dataset</strong></p></td>
+<td><p>Prediksi Diabetes (500 baris, 8 fitur)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Target</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Outcome</span></code> — 0 = Tidak Diabetes, 1 = Diabetes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tool</strong></p></td>
+<td><p>Python Script (bukan KNIME/Node)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="teori-naive-bayes">
+<h2>2. Teori Naive Bayes<a class="headerlink" href="#teori-naive-bayes" title="Link to this heading">#</a></h2>
+<section id="apa-itu-naive-bayes">
+<h3>2.1 Apa itu Naive Bayes?<a class="headerlink" href="#apa-itu-naive-bayes" title="Link to this heading">#</a></h3>
+<p>Naive Bayes adalah algoritma klasifikasi berbasis <strong>Teorema Bayes</strong> dengan asumsi bahwa setiap fitur bersifat <strong>independen satu sama lain</strong> (disebut “naive” karena asumsi ini jarang benar di dunia nyata, namun tetap bekerja dengan baik).</p>
+</section>
+<section id="formula-bayes">
+<h3>2.2 Formula Bayes<a class="headerlink" href="#formula-bayes" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[P(C \mid X) = \frac{P(X \mid C) \cdot P(C)}{P(X)}\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Notasi</p></th>
+<th class="head"><p>Nama</p></th>
+<th class="head"><p>Arti</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(C \mid X)\)</span></p></td>
+<td><p>Posterior</p></td>
+<td><p>Probabilitas kelas C, diberikan fitur X</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(X \mid C)\)</span></p></td>
+<td><p>Likelihood</p></td>
+<td><p>Probabilitas fitur X muncul di kelas C</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(C)\)</span></p></td>
+<td><p>Prior</p></td>
+<td><p>Probabilitas awal kelas C</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(X)\)</span></p></td>
+<td><p>Evidence</p></td>
+<td><p>Probabilitas fitur X (konstan, bisa diabaikan)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="jenis-jenis-naive-bayes-di-scikit-learn">
+<h3>2.3 Jenis-jenis Naive Bayes di Scikit-Learn<a class="headerlink" href="#jenis-jenis-naive-bayes-di-scikit-learn" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Varian</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Cocok Untuk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Gaussian NB</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GaussianNB</span></code></p></td>
+<td><p>Fitur numerik kontinu (asumsi distribusi normal)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multinomial NB</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MultinomialNB</span></code></p></td>
+<td><p>Data teks / frekuensi kata</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bernoulli NB</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BernoulliNB</span></code></p></td>
+<td><p>Fitur biner (0/1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Complement NB</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ComplementNB</span></code></p></td>
+<td><p>Dataset tidak seimbang</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Categorical NB</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CategoricalNB</span></code></p></td>
+<td><p>Fitur kategorikal</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Proyek ini menggunakan <code class="docutils literal notranslate"><span class="pre">GaussianNB</span></code></strong> karena semua fitur berupa angka kontinu.</p>
+</div></blockquote>
+</section>
+<section id="cara-kerja-gaussiannb">
+<h3>2.4 Cara Kerja GaussianNB<a class="headerlink" href="#cara-kerja-gaussiannb" title="Link to this heading">#</a></h3>
+<p>GaussianNB mengasumsikan setiap fitur mengikuti <strong>distribusi Gaussian (normal)</strong>:</p>
+<div class="math notranslate nohighlight">
+\[P(x_i \mid C) = \frac{1}{\sqrt{2\pi\sigma_C^2}} \exp\left(-\frac{(x_i - \mu_C)^2}{2\sigma_C^2}\right)\]</div>
+<p>Model belajar nilai <strong>mean (μ)</strong> dan <strong>variance (σ²)</strong> dari setiap fitur untuk setiap kelas.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dataset">
+<h2>3. Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<section id="informasi-dataset">
+<h3>3.1 Informasi Dataset<a class="headerlink" href="#informasi-dataset" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Properti</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Nama</strong></p></td>
+<td><p>Diabetes Prediction Dataset</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Jumlah Baris</strong></p></td>
+<td><p>500 sampel</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Jumlah Kolom</strong></p></td>
+<td><p>9 (8 fitur + 1 target)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Missing Value</strong></p></td>
+<td><p>Tidak ada</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tipe Data</strong></p></td>
+<td><p>Numerik semua</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="deskripsi-fitur">
+<h3>3.2 Deskripsi Fitur<a class="headerlink" href="#deskripsi-fitur" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Fitur</p></th>
+<th class="head"><p>Tipe</p></th>
+<th class="head"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Pregnancies</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Jumlah kehamilan</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Glucose</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Kadar glukosa dalam darah (mg/dL)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BloodPressure</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Tekanan darah diastolik (mm Hg)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SkinThickness</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Ketebalan lipatan kulit tricep (mm)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Insulin</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Kadar insulin serum 2 jam (mu U/ml)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BMI</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>Body Mass Index (kg/m²)</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DiabetesPedigreeFunction</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>Fungsi silsilah diabetes (faktor genetik)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Age</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Usia pasien (tahun)</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Outcome</span></code> ⭐</p></td>
+<td><p>Integer</p></td>
+<td><p><strong>Target</strong>: 0 = Tidak Diabetes, 1 = Diabetes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="contoh-5-baris-pertama-dataset">
+<h3>3.3 Contoh 5 Baris Pertama Dataset<a class="headerlink" href="#contoh-5-baris-pertama-dataset" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">Pregnancies</span>  <span class="n">Glucose</span>  <span class="n">BloodPressure</span>  <span class="n">SkinThickness</span>  <span class="n">Insulin</span>   <span class="n">BMI</span>   <span class="n">DPF</span>  <span class="n">Age</span>  <span class="n">Outcome</span>
+<span class="mi">0</span>            <span class="mi">4</span>      <span class="mi">138</span>            <span class="mi">116</span>             <span class="mi">42</span>      <span class="mi">519</span>  <span class="mf">34.4</span>  <span class="mf">1.491</span>   <span class="mi">59</span>        <span class="mi">0</span>
+<span class="mi">1</span>           <span class="mi">11</span>       <span class="mi">80</span>            <span class="mi">105</span>             <span class="mi">23</span>      <span class="mi">188</span>  <span class="mf">30.8</span>  <span class="mf">2.014</span>   <span class="mi">72</span>        <span class="mi">1</span>
+<span class="mi">2</span>            <span class="mi">7</span>      <span class="mi">143</span>             <span class="mi">91</span>             <span class="mi">55</span>      <span class="mi">716</span>  <span class="mf">26.8</span>  <span class="mf">2.383</span>   <span class="mi">49</span>        <span class="mi">1</span>
+<span class="mi">3</span>            <span class="mi">9</span>      <span class="mi">173</span>             <span class="mi">74</span>             <span class="mi">21</span>      <span class="mi">403</span>  <span class="mf">20.9</span>  <span class="mf">0.755</span>   <span class="mi">35</span>        <span class="mi">1</span>
+<span class="mi">4</span>           <span class="mi">13</span>      <span class="mi">107</span>             <span class="mi">75</span>             <span class="mi">10</span>      <span class="mi">433</span>  <span class="mf">37.2</span>  <span class="mf">2.329</span>   <span class="mi">63</span>        <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="distribusi-target">
+<h3>3.4 Distribusi Target<a class="headerlink" href="#distribusi-target" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kelas</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Jumlah</p></th>
+<th class="head"><p>Persentase</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Tidak Diabetes</p></td>
+<td><p>141</p></td>
+<td><p>28.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Diabetes</p></td>
+<td><p>359</p></td>
+<td><p>71.8%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="generate-dataset-csv-python">
+<h3>3.5 Generate Dataset CSV (Python)<a class="headerlink" href="#generate-dataset-csv-python" title="Link to this heading">#</a></h3>
+<p>Jika ingin membuat ulang dataset, gunakan script berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="n">age</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">bmi</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">glucose</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">blood_pressure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">insulin</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">850</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">skin_thickness</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">pregnancies</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">dpf</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">2.42</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">risk</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">glucose</span> <span class="o">&gt;</span> <span class="mi">140</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">bmi</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">45</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">dpf</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">blood_pressure</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">prob</span>    <span class="o">=</span> <span class="n">risk</span> <span class="o">/</span> <span class="mf">8.0</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">outcome</span> <span class="o">=</span> <span class="p">((</span><span class="n">prob</span> <span class="o">+</span> <span class="n">noise</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Pregnancies&#39;</span>             <span class="p">:</span> <span class="n">pregnancies</span><span class="p">,</span>
+    <span class="s1">&#39;Glucose&#39;</span>                 <span class="p">:</span> <span class="n">glucose</span><span class="p">,</span>
+    <span class="s1">&#39;BloodPressure&#39;</span>           <span class="p">:</span> <span class="n">blood_pressure</span><span class="p">,</span>
+    <span class="s1">&#39;SkinThickness&#39;</span>           <span class="p">:</span> <span class="n">skin_thickness</span><span class="p">,</span>
+    <span class="s1">&#39;Insulin&#39;</span>                 <span class="p">:</span> <span class="n">insulin</span><span class="p">,</span>
+    <span class="s1">&#39;BMI&#39;</span>                     <span class="p">:</span> <span class="n">bmi</span><span class="p">,</span>
+    <span class="s1">&#39;DiabetesPedigreeFunction&#39;</span><span class="p">:</span> <span class="n">dpf</span><span class="p">,</span>
+    <span class="s1">&#39;Age&#39;</span>                     <span class="p">:</span> <span class="n">age</span><span class="p">,</span>
+    <span class="s1">&#39;Outcome&#39;</span>                 <span class="p">:</span> <span class="n">outcome</span>
+<span class="p">})</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;diabetes_dataset.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset berhasil dibuat: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="instalasi-persiapan">
+<h2>4. Instalasi &amp; Persiapan<a class="headerlink" href="#instalasi-persiapan" title="Link to this heading">#</a></h2>
+<section id="instalasi-library">
+<h3>4.1 Instalasi Library<a class="headerlink" href="#instalasi-library" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>scikit-learn<span class="w"> </span>pandas<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
+</pre></div>
+</div>
+</section>
+<section id="struktur-file-proyek">
+<h3>4.2 Struktur File Proyek<a class="headerlink" href="#struktur-file-proyek" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>naive-bayes-project/
+│
+├── diabetes_dataset.csv       ← Dataset CSV
+├── naive_bayes_analysis.py    ← Script utama
+└── naive_bayes_analisis.png   ← Output visualisasi
+</pre></div>
+</div>
+</section>
+<section id="versi-library-yang-direkomendasikan">
+<h3>4.3 Versi Library yang Direkomendasikan<a class="headerlink" href="#versi-library-yang-direkomendasikan" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Versi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Python</p></td>
+<td><p>&gt;= 3.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>scikit-learn</p></td>
+<td><p>&gt;= 1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>pandas</p></td>
+<td><p>&gt;= 1.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>numpy</p></td>
+<td><p>&gt;= 1.21</p></td>
+</tr>
+<tr class="row-even"><td><p>matplotlib</p></td>
+<td><p>&gt;= 3.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>seaborn</p></td>
+<td><p>&gt;= 0.11</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="script-python-lengkap">
+<h2>5. Script Python Lengkap<a class="headerlink" href="#script-python-lengkap" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">============================================================</span>
+<span class="sd">  ANALISIS DATA MENGGUNAKAN NAIVE BAYES</span>
+<span class="sd">  Dataset: Prediksi Penyakit Diabetes</span>
+<span class="sd">  Library: scikit-learn (GaussianNB)</span>
+<span class="sd">============================================================</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.gridspec</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gridspec</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span>
+    <span class="n">ConfusionMatrixDisplay</span>
+<span class="p">)</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 1. LOAD DATA</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  ANALISIS NAIVE BAYES - PREDIKSI DIABETES&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;diabetes_dataset.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[1] INFO DATASET&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Jumlah baris  : </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Jumlah kolom  : </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Fitur         : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Target        : Outcome (0 = Tidak Diabetes, 1 = Diabetes)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 2. EKSPLORASI DATA (EDA)</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[2] STATISTIK DESKRIPTIF&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[3] CEK MISSING VALUE&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[4] DISTRIBUSI TARGET&quot;</span><span class="p">)</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vc</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Diabetes&quot;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Tidak Diabetes&quot;</span>
+    <span class="n">pct</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> sampel (</span><span class="si">{</span><span class="n">pct</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 3. PERSIAPAN DATA</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[5] PERSIAPAN DATA&quot;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Outcome&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span>
+
+<span class="c1"># Split: 80% train, 20% test</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Train set: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> sampel&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Test set : </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> sampel&quot;</span><span class="p">)</span>
+
+<span class="c1"># Standarisasi (StandardScaler)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span>  <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 4. TRAINING MODEL GAUSSIAN NAIVE BAYES</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[6] TRAINING MODEL - GaussianNB&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Model berhasil dilatih!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Class Prior (P(C)): </span><span class="si">{</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">class_prior_</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 5. PREDIKSI &amp; EVALUASI</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[7] EVALUASI MODEL&quot;</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">y_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">acc</span>          <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">cm</span>           <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    Accuracy  : </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">acc</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    TP=</span><span class="si">{</span><span class="n">tp</span><span class="si">}</span><span class="s2">, TN=</span><span class="si">{</span><span class="n">tn</span><span class="si">}</span><span class="s2">, FP=</span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2">, FN=</span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    Precision (Diabetes)    : </span><span class="si">{</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Recall    (Diabetes)    : </span><span class="si">{</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fn</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    F1-Score  (Diabetes)    : </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="o">+</span><span class="n">fn</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    Classification Report:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span>
+      <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Tidak Diabetes&quot;</span><span class="p">,</span> <span class="s2">&quot;Diabetes&quot;</span><span class="p">]))</span>
+
+<span class="c1"># Cross-Validation</span>
+<span class="n">cv</span>        <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Cross-Validation (5-fold) Accuracy: </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ROC AUC</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+<span class="n">roc_auc</span>     <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    ROC AUC Score: </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 6. CONTOH PREDIKSI DATA BARU</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[8] CONTOH PREDIKSI DATA BARU&quot;</span><span class="p">)</span>
+<span class="n">sampel_baru</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+    <span class="s1">&#39;Pregnancies&#39;</span>             <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;Glucose&#39;</span>                 <span class="p">:</span> <span class="mi">158</span><span class="p">,</span>
+    <span class="s1">&#39;BloodPressure&#39;</span>           <span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="s1">&#39;SkinThickness&#39;</span>           <span class="p">:</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="s1">&#39;Insulin&#39;</span>                 <span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s1">&#39;BMI&#39;</span>                     <span class="p">:</span> <span class="mf">33.6</span><span class="p">,</span>
+    <span class="s1">&#39;DiabetesPedigreeFunction&#39;</span><span class="p">:</span> <span class="mf">0.627</span><span class="p">,</span>
+    <span class="s1">&#39;Age&#39;</span>                     <span class="p">:</span> <span class="mi">50</span>
+<span class="p">}])</span>
+<span class="n">sampel_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">sampel_baru</span><span class="p">)</span>
+<span class="n">prediksi</span>      <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sampel_scaled</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">probab</span>        <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sampel_scaled</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">label</span>         <span class="o">=</span> <span class="s2">&quot;DIABETES&quot;</span> <span class="k">if</span> <span class="n">prediksi</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;TIDAK DIABETES&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Input: Glucose=158, BMI=33.6, Age=50, DPF=0.627&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Prediksi : </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Probabilitas Tidak Diabetes : </span><span class="si">{</span><span class="n">probab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Probabilitas Diabetes       : </span><span class="si">{</span><span class="n">probab</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="c1"># 7. VISUALISASI (8 Panel)</span>
+<span class="c1"># ─────────────────────────────────────────────</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[9] MEMBUAT VISUALISASI...&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">WARNA</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#4CAF50&#39;</span><span class="p">,</span> <span class="s1">&#39;#F44336&#39;</span><span class="p">]</span>
+<span class="n">fig</span>   <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#F8F9FA&#39;</span><span class="p">)</span>
+<span class="n">gs</span>    <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 1: Distribusi Outcome ─────────────────</span>
+<span class="n">ax1</span>    <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">bars</span>   <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s1">&#39;Tidak</span><span class="se">\n</span><span class="s1">Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">WARNA</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">bar</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span>
+             <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="se">\n</span><span class="s1">(</span><span class="si">{</span><span class="n">val</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%)&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Kelas Target&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Sampel&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 2: Confusion Matrix ──────────────────</span>
+<span class="n">ax2</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span>
+                              <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tdk Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Prediksi&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Aktual&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 3: ROC Curve ─────────────────────────</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1976D2&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;ROC (AUC = </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1976D2&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Classifier&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ROC Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">])</span>
+
+<span class="c1"># ── Plot 4: Cross-Validation Scores ──────────</span>
+<span class="n">ax4</span>   <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">folds</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Fold </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">))]</span>
+<span class="n">bars4</span> <span class="o">=</span> <span class="n">ax4</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">folds</span><span class="p">,</span> <span class="n">cv_scores</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#7B1FA2&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FF6F00&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Mean = </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">bar</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bars4</span><span class="p">,</span> <span class="n">cv_scores</span><span class="p">):</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.003</span><span class="p">,</span>
+             <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Cross-Validation (5-Fold)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 5: Distribusi Glucose per Kelas ─────</span>
+<span class="n">ax5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">label_val</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">WARNA</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Tidak Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">]):</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">label_val</span><span class="p">][</span><span class="s1">&#39;Glucose&#39;</span><span class="p">]</span>
+    <span class="n">ax5</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Glucose per Kelas&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Glucose Level&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 6: Distribusi BMI per Kelas ─────────</span>
+<span class="n">ax6</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">label_val</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">WARNA</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Tidak Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">]):</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">label_val</span><span class="p">][</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span>
+    <span class="n">ax6</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi BMI per Kelas&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;BMI&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 7: Heatmap Korelasi ──────────────────</span>
+<span class="n">ax7</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax7</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Korelasi Antar Fitur&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># ── Plot 8: Distribusi Probabilitas Prediksi ──</span>
+<span class="n">ax8</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_prob</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WARNA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Aktual: Tdk Diabetes&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_prob</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WARNA</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Aktual: Diabetes&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Threshold = 0.5&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Probabilitas Prediksi&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Probabilitas (Diabetes)&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># ── Judul Utama ───────────────────────────────</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="s1">&#39;Analisis Data Menggunakan Naive Bayes</span><span class="se">\n</span><span class="s1">Dataset: Prediksi Penyakit Diabetes&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1A237E&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;naive_bayes_analisis.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#F8F9FA&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Visualisasi disimpan: naive_bayes_analisis.png&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  SELESAI! Semua hasil berhasil digenerate.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="penjelasan-tiap-tahap">
+<h2>6. Penjelasan Tiap Tahap<a class="headerlink" href="#penjelasan-tiap-tahap" title="Link to this heading">#</a></h2>
+<section id="tahap-1-load-data">
+<h3>Tahap 1 — Load Data<a class="headerlink" href="#tahap-1-load-data" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;diabetes_dataset.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Membaca file CSV ke dalam DataFrame pandas. Pastikan file <code class="docutils literal notranslate"><span class="pre">diabetes_dataset.csv</span></code> berada di direktori yang sama dengan script.</p>
+</section>
+<hr class="docutils" />
+<section id="tahap-2-eksplorasi-data-eda">
+<h3>Tahap 2 — Eksplorasi Data (EDA)<a class="headerlink" href="#tahap-2-eksplorasi-data-eda" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>       <span class="c1"># Statistik deskriptif (mean, std, min, max, dll)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>   <span class="c1"># Deteksi missing value</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>  <span class="c1"># Distribusi kelas target</span>
+</pre></div>
+</div>
+<p>EDA bertujuan memahami struktur data sebelum masuk ke proses modeling.</p>
+</section>
+<hr class="docutils" />
+<section id="tahap-3-persiapan-data">
+<h3>Tahap 3 — Persiapan Data<a class="headerlink" href="#tahap-3-persiapan-data" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Outcome&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Fitur</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span>                 <span class="c1"># Target</span>
+
+<span class="c1"># Split 80% train, 20% test (stratify menjaga proporsi kelas)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="c1"># Standarisasi: mean=0, std=1</span>
+<span class="n">scaler</span>         <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span>  <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>   <span class="c1"># HANYA transform, bukan fit_transform!</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>⚠️ <strong>Penting:</strong> <code class="docutils literal notranslate"><span class="pre">scaler.fit_transform()</span></code> hanya dipanggil pada data <strong>train</strong>. Data <strong>test</strong> hanya di-<code class="docutils literal notranslate"><span class="pre">transform()</span></code> agar tidak terjadi <em>data leakage</em>.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="tahap-4-training-model">
+<h3>Tahap 4 — Training Model<a class="headerlink" href="#tahap-4-training-model" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GaussianNB secara otomatis menghitung <strong>mean</strong> dan <strong>variance</strong> dari setiap fitur untuk setiap kelas selama proses <code class="docutils literal notranslate"><span class="pre">fit()</span></code>.</p>
+<p>Parameter penting <code class="docutils literal notranslate"><span class="pre">GaussianNB</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">var_smoothing</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1e-9</span></code></p></td>
+<td><p>Nilai kecil ditambahkan ke variance untuk stabilitas numerik</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">priors</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>Probabilitas prior kelas (jika None, dihitung dari data)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="tahap-5-prediksi-evaluasi">
+<h3>Tahap 5 — Prediksi &amp; Evaluasi<a class="headerlink" href="#tahap-5-prediksi-evaluasi" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>          <span class="c1"># Prediksi kelas</span>
+<span class="n">y_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Probabilitas kelas positif</span>
+</pre></div>
+</div>
+<section id="metrik-evaluasi-yang-digunakan">
+<h4>Metrik Evaluasi yang Digunakan:<a class="headerlink" href="#metrik-evaluasi-yang-digunakan" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metrik</p></th>
+<th class="head"><p>Formula</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p>(TP+TN)/(TP+TN+FP+FN)</p></td>
+<td><p>Persentase prediksi benar secara keseluruhan</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Precision</strong></p></td>
+<td><p>TP/(TP+FP)</p></td>
+<td><p>Dari semua yang diprediksi positif, berapa yang benar?</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recall</strong></p></td>
+<td><p>TP/(TP+FN)</p></td>
+<td><p>Dari semua yang aktual positif, berapa yang terdeteksi?</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>F1-Score</strong></p></td>
+<td><p>2×(P×R)/(P+R)</p></td>
+<td><p>Rata-rata harmonis Precision dan Recall</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ROC AUC</strong></p></td>
+<td><p>Area under ROC curve</p></td>
+<td><p>Kemampuan model memisahkan kelas (0.5=acak, 1.0=sempurna)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="confusion-matrix">
+<h4>Confusion Matrix:<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                  <span class="n">Prediksi</span>
+                  <span class="n">Tdk</span> <span class="n">Diabetes</span>  <span class="n">Diabetes</span>
+<span class="n">Aktual</span>  <span class="n">Tdk</span> <span class="n">Diab</span>      <span class="n">TN</span>           <span class="n">FP</span>
+        <span class="n">Diabetes</span>      <span class="n">FN</span>           <span class="n">TP</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tahap-6-cross-validation">
+<h3>Tahap 6 — Cross-Validation<a class="headerlink" href="#tahap-6-cross-validation" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span>        <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Accuracy: </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>StratifiedKFold</strong> digunakan agar setiap fold memiliki proporsi kelas yang sama, cocok untuk dataset yang tidak seimbang.</p>
+</section>
+<hr class="docutils" />
+<section id="tahap-7-prediksi-data-baru">
+<h3>Tahap 7 — Prediksi Data Baru<a class="headerlink" href="#tahap-7-prediksi-data-baru" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sampel_baru</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+    <span class="s1">&#39;Pregnancies&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Glucose&#39;</span><span class="p">:</span> <span class="mi">158</span><span class="p">,</span> <span class="s1">&#39;BloodPressure&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="s1">&#39;SkinThickness&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Insulin&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;BMI&#39;</span><span class="p">:</span> <span class="mf">33.6</span><span class="p">,</span>
+    <span class="s1">&#39;DiabetesPedigreeFunction&#39;</span><span class="p">:</span> <span class="mf">0.627</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="mi">50</span>
+<span class="p">}])</span>
+
+<span class="n">sampel_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">sampel_baru</span><span class="p">)</span>         <span class="c1"># Skala dulu!</span>
+<span class="n">prediksi</span>      <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sampel_scaled</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>       <span class="c1"># Kelas prediksi</span>
+<span class="n">probab</span>        <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sampel_scaled</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Probabilitas tiap kelas</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hasil-evaluasi-model">
+<h2>7. Hasil &amp; Evaluasi Model<a class="headerlink" href="#hasil-evaluasi-model" title="Link to this heading">#</a></h2>
+<section id="ringkasan-performa">
+<h3>7.1 Ringkasan Performa<a class="headerlink" href="#ringkasan-performa" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metrik</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p><strong>85.00%</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Precision (Diabetes)</strong></p></td>
+<td><p>0.8608</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recall (Diabetes)</strong></p></td>
+<td><p>0.9444</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>F1-Score (Diabetes)</strong></p></td>
+<td><p>0.9007</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ROC AUC</strong></p></td>
+<td><p><strong>0.9206</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cross-Val (5-fold)</strong></p></td>
+<td><p>87.25% ± 3.10%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classification-report">
+<h3>7.2 Classification Report<a class="headerlink" href="#classification-report" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">precision</span>    <span class="n">recall</span>  <span class="n">f1</span><span class="o">-</span><span class="n">score</span>   <span class="n">support</span>
+
+<span class="n">Tidak</span> <span class="n">Diabetes</span>       <span class="mf">0.81</span>      <span class="mf">0.61</span>      <span class="mf">0.69</span>        <span class="mi">28</span>
+      <span class="n">Diabetes</span>       <span class="mf">0.86</span>      <span class="mf">0.94</span>      <span class="mf">0.90</span>        <span class="mi">72</span>
+
+      <span class="n">accuracy</span>                           <span class="mf">0.85</span>       <span class="mi">100</span>
+     <span class="n">macro</span> <span class="n">avg</span>       <span class="mf">0.84</span>      <span class="mf">0.78</span>      <span class="mf">0.80</span>       <span class="mi">100</span>
+  <span class="n">weighted</span> <span class="n">avg</span>       <span class="mf">0.85</span>      <span class="mf">0.85</span>      <span class="mf">0.84</span>       <span class="mi">100</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>7.3 Confusion Matrix<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                  <span class="n">Prediksi</span>
+                  <span class="n">Tdk</span> <span class="n">Diab</span>   <span class="n">Diabetes</span>
+<span class="n">Aktual</span>  <span class="n">Tdk</span> <span class="n">Diab</span>    <span class="mi">17</span>          <span class="mi">11</span>
+        <span class="n">Diabetes</span>     <span class="mi">4</span>          <span class="mi">68</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True Positive (TP)</p></td>
+<td><p>68</p></td>
+</tr>
+<tr class="row-odd"><td><p>True Negative (TN)</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-even"><td><p>False Positive (FP)</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>False Negative (FN)</p></td>
+<td><p>4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="contoh-output-prediksi-data-baru">
+<h3>7.4 Contoh Output Prediksi Data Baru<a class="headerlink" href="#contoh-output-prediksi-data-baru" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span>  <span class="p">:</span> <span class="n">Pregnancies</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Glucose</span><span class="o">=</span><span class="mi">158</span><span class="p">,</span> <span class="n">BloodPressure</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+         <span class="n">SkinThickness</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">Insulin</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">BMI</span><span class="o">=</span><span class="mf">33.6</span><span class="p">,</span> <span class="n">DPF</span><span class="o">=</span><span class="mf">0.627</span><span class="p">,</span> <span class="n">Age</span><span class="o">=</span><span class="mi">50</span>
+
+<span class="n">Prediksi</span>               <span class="p">:</span> <span class="n">DIABETES</span>
+<span class="n">Probabilitas</span> <span class="n">Tidak</span> <span class="n">DM</span>  <span class="p">:</span>  <span class="mf">1.24</span><span class="o">%</span>
+<span class="n">Probabilitas</span> <span class="n">Diabetes</span>  <span class="p">:</span> <span class="mf">98.76</span><span class="o">%</span>
+</pre></div>
+</div>
+</section>
+<section id="class-prior-probability">
+<h3>7.5 Class Prior Probability<a class="headerlink" href="#class-prior-probability" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="n">Tidak</span> <span class="n">Diabetes</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.2825</span>  <span class="p">(</span><span class="mf">28.25</span><span class="o">%</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="n">Diabetes</span><span class="p">)</span>       <span class="o">=</span> <span class="mf">0.7175</span>  <span class="p">(</span><span class="mf">71.75</span><span class="o">%</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="visualisasi">
+<h2>8. Visualisasi<a class="headerlink" href="#visualisasi" title="Link to this heading">#</a></h2>
+<p>Script menghasilkan <strong>8 panel visualisasi</strong> dalam satu figure:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Panel</p></th>
+<th class="head"><p>Visualisasi</p></th>
+<th class="head"><p>Tujuan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Bar Chart Distribusi Kelas</p></td>
+<td><p>Melihat keseimbangan kelas target</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Confusion Matrix</p></td>
+<td><p>Evaluasi prediksi benar/salah</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>ROC Curve</p></td>
+<td><p>Kemampuan diskriminasi model</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Cross-Validation (5-fold)</p></td>
+<td><p>Konsistensi performa di berbagai fold</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Histogram Glucose</p></td>
+<td><p>Distribusi fitur terpenting per kelas</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Histogram BMI</p></td>
+<td><p>Distribusi BMI per kelas</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Heatmap Korelasi</p></td>
+<td><p>Hubungan antar semua fitur</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Distribusi Probabilitas</p></td>
+<td><p>Kepercayaan model dalam prediksi</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Output disimpan sebagai: <strong><code class="docutils literal notranslate"><span class="pre">naive_bayes_analisis.png</span></code></strong> (resolusi 150 DPI)</p>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>9. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<section id="hasil-utama">
+<h3>9.1 Hasil Utama<a class="headerlink" href="#hasil-utama" title="Link to this heading">#</a></h3>
+<p>Model <strong>Gaussian Naive Bayes</strong> berhasil mengklasifikasikan penyakit diabetes dengan performa yang cukup baik:</p>
+<ul class="simple">
+<li><p>Accuracy <strong>85%</strong> menunjukkan model mampu memprediksi 85 dari 100 sampel dengan benar.</p></li>
+<li><p>ROC AUC <strong>0.92</strong> mengindikasikan kemampuan diskriminasi yang sangat baik (mendekati 1.0).</p></li>
+<li><p>Cross-validation <strong>87.25% ± 3.10%</strong> menunjukkan model konsisten dan tidak overfit.</p></li>
+<li><p>Recall untuk kelas Diabetes <strong>94.4%</strong> artinya model jarang melewatkan kasus diabetes (FN rendah) — ini penting dalam konteks medis.</p></li>
+</ul>
+</section>
+<section id="kelebihan-naive-bayes">
+<h3>9.2 Kelebihan Naive Bayes<a class="headerlink" href="#kelebihan-naive-bayes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Sangat cepat dalam training dan prediksi</p></li>
+<li><p>Bekerja baik dengan data kecil hingga sedang</p></li>
+<li><p>Tidak memerlukan tuning hyperparameter yang rumit</p></li>
+<li><p>Interpretabel dan mudah dipahami</p></li>
+</ul>
+</section>
+<section id="kekurangan-naive-bayes">
+<h3>9.3 Kekurangan Naive Bayes<a class="headerlink" href="#kekurangan-naive-bayes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Asumsi independensi antar fitur jarang terpenuhi di data nyata</p></li>
+<li><p>Kurang akurat dibanding model kompleks (Random Forest, XGBoost) pada data besar</p></li>
+<li><p>Sensitif terhadap fitur yang sangat berkorelasi</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Data_Understanding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Understanding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Modelling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-isi">Daftar Isi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">1. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teori-naive-bayes">2. Teori Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-naive-bayes">2.1 Apa itu Naive Bayes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-bayes">2.2 Formula Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-naive-bayes-di-scikit-learn">2.3 Jenis-jenis Naive Bayes di Scikit-Learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-gaussiannb">2.4 Cara Kerja GaussianNB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">3. Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset">3.1 Informasi Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-fitur">3.2 Deskripsi Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-5-baris-pertama-dataset">3.3 Contoh 5 Baris Pertama Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-target">3.4 Distribusi Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-dataset-csv-python">3.5 Generate Dataset CSV (Python)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-persiapan">4. Instalasi &amp; Persiapan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library">4.1 Instalasi Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-file-proyek">4.2 Struktur File Proyek</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versi-library-yang-direkomendasikan">4.3 Versi Library yang Direkomendasikan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-python-lengkap">5. Script Python Lengkap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-tiap-tahap">6. Penjelasan Tiap Tahap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-load-data">Tahap 1 — Load Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-eksplorasi-data-eda">Tahap 2 — Eksplorasi Data (EDA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-persiapan-data">Tahap 3 — Persiapan Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-training-model">Tahap 4 — Training Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-prediksi-evaluasi">Tahap 5 — Prediksi &amp; Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi-yang-digunakan">Metrik Evaluasi yang Digunakan:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-cross-validation">Tahap 6 — Cross-Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-7-prediksi-data-baru">Tahap 7 — Prediksi Data Baru</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-evaluasi-model">7. Hasil &amp; Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-performa">7.1 Ringkasan Performa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">7.2 Classification Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3 Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-output-prediksi-data-baru">7.4 Contoh Output Prediksi Data Baru</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-prior-probability">7.5 Class Prior Probability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">8. Visualisasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">9. Kesimpulan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-utama">9.1 Hasil Utama</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-naive-bayes">9.2 Kelebihan Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-naive-bayes">9.3 Kekurangan Naive Bayes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
