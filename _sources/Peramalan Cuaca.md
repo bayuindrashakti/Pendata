@@ -78,7 +78,7 @@ s5p_no2_aoi = s5p_no2_daily.aggregate_spatial(
 Code diatas memerlukan titik koordinasi area yang akan diambil data 
 -nya, untuk mengambil titik koordinasi kaian kunjungi webiste https://geojson.io/#map=14.8/-7.04732/112.69463 . Didalam website tersebut kalian akan memilih daerah dengan cara memberi shape kotak didaerah yang ingin kalian ambil datanya.
 
-![screenshot](gambartugasramal/wilayah.png)
+![wilayah](gambartugasramal/wilayah.png)
 
 Di panel sebelah kanan terdapat data JSON yang berupa koordinat daerah yang kalian pilih, kalian salin terus sesuaikan dengan code diatas di bagian variabel “aoi” dan spatial_extent.
 

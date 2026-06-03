@@ -472,7 +472,7 @@ Authenticated using device code flow.</p>
 </div>
 <p>Code diatas memerlukan titik koordinasi area yang akan diambil data
 -nya, untuk mengambil titik koordinasi kaian kunjungi webiste <a class="reference external" href="https://geojson.io/#map=14.8/-7.04732/112.69463">https://geojson.io/#map=14.8/-7.04732/112.69463</a> . Didalam website tersebut kalian akan memilih daerah dengan cara memberi shape kotak didaerah yang ingin kalian ambil datanya.</p>
-<p><img alt="screenshot" src="gambartugasramal/wilayah.png" /></p>
+<p><img alt="wilayah" src="_images/wilayah.png" /></p>
 <p>Di panel sebelah kanan terdapat data JSON yang berupa koordinat daerah yang kalian pilih, kalian salin terus sesuaikan dengan code diatas di bagian variabel “aoi” dan spatial_extent.</p>
 <p>Lalu kalian tambahkan baris code dibawah untuk memulai pengambilan data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">s5post</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 in Stadion Santiago Bernabeu&quot;</span><span class="p">,</span> <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;NO2SantiagoBernabeu.nc&quot;</span><span class="p">)</span>
@@ -729,7 +729,7 @@ output:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="screenshot" src="gambartugasramal/deteksioutlier.png" /></p>
+<p><img alt="screenshot" src="_images/deteksioutlier.png" /></p>
 <p>Setelah itu, kita akan menghapus data outlier. Karena data ini merupakan data Time Series, maka data outlier yang dihapus akan diisi kembali menggunakan Interpolasi Linear.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tandai outlier menjadi NaN</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">))</span>
@@ -769,7 +769,7 @@ output:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="screenshot" src="gambartugasramal/plotdata.png" /></p>
+<p><img alt="screenshot" src="_images/plotdata.png" /></p>
 </section>
 </section>
 <section id="modeling-menggunakan-knn-regression">
@@ -1043,7 +1043,7 @@ print(supervised_df.shape)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="screenshot" src="gambartugasramal/knn4hari.png" /></p>
+<p><img alt="screenshot" src="_images/knn4hari.png" /></p>
 <p>10 hari sebelum:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test_10</span><span class="p">)),</span> <span class="n">y_test_10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
@@ -1055,7 +1055,7 @@ print(supervised_df.shape)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="screenshot" src="gambartugasramal/knn10hari.png" /></p>
+<p><img alt="screenshot" src="_images/knn10hari.png" /></p>
 <p>30 hari sebelum`:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test_30</span><span class="p">)),</span> <span class="n">y_test_30</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
@@ -1067,7 +1067,7 @@ print(supervised_df.shape)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="screenshot" src="gambartugasramal/knn30hari.png" /></p>
+<p><img alt="screenshot" src="_images/knn30hari.png" /></p>
 <p>Kesimpulan
 Berdasarkan hasil penelitian dapat disimpulkan bahwa:
 Data NO₂ berhasil diperoleh dari Sentinel-5P melalui OpenEO.
