@@ -681,7 +681,7 @@ plt.show()
 
 ![screenshot](gambartugasramal/knn10hari.png)
 
-30 hari sebelum:
+30 hari sebelum`:
 
 ```python
 plt.figure()
