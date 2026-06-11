@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Perkenalan &#8212; My sample book</title>
+    <title>Analisis Data &#8212; My sample book</title>
   
   
   
@@ -60,12 +60,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Analisa Data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Business Understanding" href="Business_Understanding.html" />
+    <link rel="prev" title="Peramalan Konsentrasi Nitrogen Dioksida (NO₂) di Sekitar Stadion Santiago Bernabéu(Madrid,Spanyol) Menggunakan K-Nearest Neighbors Regression" href="Peramalan%20Cuaca.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -117,8 +115,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -138,7 +134,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -165,13 +161,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Perkenalan
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Business Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
 
@@ -181,7 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Deployment.html">Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Peramalan%20Cuaca.html">Peramalan Konsentrasi Nitrogen Dioksida (NO₂) di Sekitar Stadion Santiago Bernabéu(Madrid,Spanyol) Menggunakan K-Nearest Neighbors Regression</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Analisa%20Data.html">Analisis Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis Data</a></li>
 </ul>
 
     </div>
@@ -258,7 +254,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAnalisa Data.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +284,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/Analisa Data.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +360,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Perkenalan</h1>
+    <h1>Analisis Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,8 +370,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-muhammad-bayu-indrashakti">R Muhammad Bayu Indrashakti</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">240411100193</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-yang-dilakukan-mengenai-apa">1. Prediksi yang Dilakukan Mengenai Apa?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seperti-apa-bentuk-data-training-input-dan-output">2. Seperti Apa Bentuk Data Training (Input dan Output)?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-x">Input (X)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-y">Output (y)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-yang-dimaksud-dengan-lag">3. Apa yang Dimaksud dengan Lag?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-analisis-yang-dilakukan">4. Bagaimana Tahapan Analisis yang Dilakukan?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-analisis">Hasil Analisis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
             </nav>
         </div>
@@ -387,16 +391,116 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="perkenalan">
-<h1>Perkenalan<a class="headerlink" href="#perkenalan" title="Link to this heading">#</a></h1>
-<section id="r-muhammad-bayu-indrashakti">
-<h2>R Muhammad Bayu Indrashakti<a class="headerlink" href="#r-muhammad-bayu-indrashakti" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-data">
+<h1>Analisis Data<a class="headerlink" href="#analisis-data" title="Link to this heading">#</a></h1>
+<section id="prediksi-yang-dilakukan-mengenai-apa">
+<h2>1. Prediksi yang Dilakukan Mengenai Apa?<a class="headerlink" href="#prediksi-yang-dilakukan-mengenai-apa" title="Link to this heading">#</a></h2>
+<p>Analisis ini berfokus pada peramalan (<strong>forecasting</strong>) terhadap <strong>kebutuhan listrik (Demand)</strong> di wilayah Victoria, Australia. Proses prediksi memanfaatkan pendekatan <em>time series forecasting</em> dengan menggunakan data historis konsumsi listrik serta informasi suhu (<em>Temperature</em>) sebagai variabel pendukung (<em>exogenous variable</em>).</p>
+<p>Model yang diterapkan adalah <strong>LightGBM Regressor (LGBMRegressor)</strong> yang dibangun menggunakan <strong>ForecasterRecursive</strong> dari library Skforecast.</p>
 </section>
-<section id="id1">
-<h2>240411100193<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="seperti-apa-bentuk-data-training-input-dan-output">
+<h2>2. Seperti Apa Bentuk Data Training (Input dan Output)?<a class="headerlink" href="#seperti-apa-bentuk-data-training-input-dan-output" title="Link to this heading">#</a></h2>
+<section id="input-x">
+<h3>Input (X)<a class="headerlink" href="#input-x" title="Link to this heading">#</a></h3>
+<p>Fitur yang digunakan sebagai data masukan terdiri atas:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_1</span></code> : nilai Demand pada 1 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_2</span></code> : nilai Demand pada 2 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_3</span></code> : nilai Demand pada 3 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_4</span></code> : nilai Demand pada 4 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_5</span></code> : nilai Demand pada 5 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_6</span></code> : nilai Demand pada 6 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_7</span></code> : nilai Demand pada 7 hari sebelumnya</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Temperature</span></code> : suhu rata-rata harian</p></li>
+</ul>
 </section>
-<div class="toctree-wrapper compound">
-</div>
+<section id="output-y">
+<h3>Output (y)<a class="headerlink" href="#output-y" title="Link to this heading">#</a></h3>
+<p>Variabel target yang diprediksi adalah:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Demand</span></code> pada periode berikutnya.</p></li>
+</ul>
+<p>Dengan konfigurasi tersebut, model mempelajari keterkaitan antara riwayat konsumsi listrik beberapa hari sebelumnya beserta suhu lingkungan untuk memperkirakan kebutuhan listrik pada hari yang akan datang.</p>
+<br>
+<p><img alt="screenshot" src="_images/2.png" /></p>
+<br>
+</section>
+</section>
+<hr class="docutils" />
+<section id="apa-yang-dimaksud-dengan-lag">
+<h2>3. Apa yang Dimaksud dengan Lag?<a class="headerlink" href="#apa-yang-dimaksud-dengan-lag" title="Link to this heading">#</a></h2>
+<p>Dalam analisis deret waktu (<em>time series</em>), <em>lag</em> merupakan nilai suatu variabel pada periode-periode sebelumnya yang digunakan sebagai fitur prediksi.</p>
+<p>Sebagai contoh:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_1</span></code> merepresentasikan nilai Demand satu hari sebelumnya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_2</span></code> merepresentasikan nilai Demand dua hari sebelumnya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_7</span></code> merepresentasikan nilai Demand tujuh hari sebelumnya.</p></li>
+</ul>
+<p>Pemanfaatan fitur lag memungkinkan model mengenali pola historis dan hubungan antarwaktu (<em>temporal relationship</em>) yang terdapat pada data.</p>
+</section>
+<hr class="docutils" />
+<section id="bagaimana-tahapan-analisis-yang-dilakukan">
+<h2>4. Bagaimana Tahapan Analisis yang Dilakukan?<a class="headerlink" href="#bagaimana-tahapan-analisis-yang-dilakukan" title="Link to this heading">#</a></h2>
+<p>Langkah-langkah analisis yang diterapkan dalam studi ini meliputi:</p>
+<ol class="arabic simple">
+<li><p>Mengambil dataset <strong>vic_electricity</strong> yang memuat informasi permintaan listrik dan suhu di Victoria, Australia.</p></li>
+<li><p>Melakukan proses agregasi data sehingga memiliki frekuensi harian (<em>daily frequency</em>).</p></li>
+<li><p>Membagi dataset menjadi data pelatihan (<em>training set</em>) dan data pengujian (<em>testing set</em>).</p></li>
+<li><p>Membentuk fitur lag sebanyak tujuh periode, yaitu <code class="docutils literal notranslate"><span class="pre">lag_1</span></code> hingga <code class="docutils literal notranslate"><span class="pre">lag_7</span></code>.</p></li>
+<li><p>Menambahkan variabel suhu (<em>Temperature</em>) sebagai variabel eksternal yang mendukung proses prediksi.</p></li>
+<li><p>Melatih model menggunakan <strong>LGBMRegressor</strong> melalui pendekatan <strong>ForecasterRecursive</strong>.</p></li>
+<li><p>Mengukur <strong>Feature Importance</strong> untuk mengetahui fitur yang memberikan kontribusi terbesar terhadap model.</p></li>
+</ol>
+<br>
+<p><img alt="screenshot" src="_images/4.7.png" /></p>
+<br>
+<ol class="arabic simple" start="8">
+<li><p>Melakukan interpretasi model menggunakan <strong>SHAP (SHapley Additive exPlanations)</strong> guna memahami pengaruh masing-masing fitur terhadap hasil prediksi.</p></li>
+</ol>
+<br>
+<p><img alt="screenshot" src="_images/4.8.png" /></p>
+<br>
+<ol class="arabic simple" start="9">
+<li><p>Menampilkan <strong>SHAP Dependence Plot</strong> untuk menganalisis hubungan antara nilai fitur dengan kontribusinya terhadap prediksi.</p></li>
+</ol>
+<br>
+<p><img alt="screenshot" src="_images/4.9.png" /></p>
+<br>
+<ol class="arabic simple" start="10">
+<li><p>Menggunakan <strong>Permutation Importance</strong> sebagai pendekatan tambahan dalam mengevaluasi tingkat kepentingan setiap fitur.</p></li>
+</ol>
+<br>
+<p><img alt="screenshot" src="_images/4.10.png" /></p>
+<br>
+<ol class="arabic simple" start="11">
+<li><p>Membuat <strong>Partial Dependence Plot (PDP)</strong> untuk mengamati perubahan hasil prediksi ketika suatu fitur mengalami perubahan nilai.</p></li>
+</ol>
+<br>
+<p><img alt="screenshot" src="_images/4.11.png" /></p>
+<br>
+<ol class="arabic simple" start="12">
+<li><p>Menghasilkan prediksi kebutuhan listrik untuk beberapa periode mendatang.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="hasil-analisis">
+<h2>Hasil Analisis<a class="headerlink" href="#hasil-analisis" title="Link to this heading">#</a></h2>
+<p>Dari evaluasi menggunakan <strong>Feature Importance</strong>, <strong>Permutation Importance</strong>, dan <strong>SHAP Analysis</strong>, diperoleh beberapa temuan utama sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Fitur <strong>lag_1</strong> menjadi variabel yang paling dominan dalam memengaruhi hasil prediksi.</p></li>
+<li><p>Variabel <strong>Temperature</strong> menempati urutan berikutnya sebagai faktor penting yang berkontribusi terhadap prediksi kebutuhan listrik.</p></li>
+<li><p>Fitur <strong>lag_7</strong> juga menunjukkan pengaruh yang cukup besar terhadap performa model.</p></li>
+<li><p>Nilai permintaan listrik pada hari sebelumnya cenderung memiliki hubungan positif dengan nilai prediksi pada hari berikutnya.</p></li>
+<li><p>Pengaruh suhu terhadap permintaan listrik tidak bersifat linier, sebagaimana terlihat pada visualisasi SHAP Dependence Plot dan Partial Dependence Plot.</p></li>
+<li><p>Model mampu menggabungkan informasi historis dan faktor lingkungan untuk menghasilkan prediksi yang lebih baik.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Model <em>time series forecasting</em> yang dikembangkan menggunakan <strong>LGBMRegressor</strong> dan <strong>ForecasterRecursive</strong> mampu melakukan prediksi kebutuhan listrik dengan memanfaatkan data historis serta variabel suhu. Hasil interpretasi menunjukkan bahwa fitur berbasis riwayat permintaan listrik (<em>lag features</em>) menjadi faktor yang paling menentukan dalam proses prediksi. Selain itu, suhu berfungsi sebagai variabel eksternal yang turut memberikan pengaruh penting terhadap akurasi model dalam memperkirakan kebutuhan listrik di masa mendatang.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -429,14 +533,14 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="Business_Understanding.html"
-       title="next page">
+    <a class="left-prev"
+       href="Peramalan%20Cuaca.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Business Understanding</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Peramalan Konsentrasi Nitrogen Dioksida (NO₂) di Sekitar Stadion Santiago Bernabéu(Madrid,Spanyol) Menggunakan K-Nearest Neighbors Regression</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -456,8 +560,16 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-muhammad-bayu-indrashakti">R Muhammad Bayu Indrashakti</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">240411100193</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-yang-dilakukan-mengenai-apa">1. Prediksi yang Dilakukan Mengenai Apa?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seperti-apa-bentuk-data-training-input-dan-output">2. Seperti Apa Bentuk Data Training (Input dan Output)?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-x">Input (X)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-y">Output (y)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-yang-dimaksud-dengan-lag">3. Apa yang Dimaksud dengan Lag?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-analisis-yang-dilakukan">4. Bagaimana Tahapan Analisis yang Dilakukan?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-analisis">Hasil Analisis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
   </nav></div>
 
